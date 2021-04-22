@@ -1,0 +1,35 @@
+<nav class="navbar navbar-header navbar-expand-lg" data-background-color="red2">
+    <div class="container-fluid">
+
+        <h3 class="float-left text-white">
+            Sistema de Control de Ingresos
+        </h3>
+        <ul class="navbar-nav topbar-nav ml-md-auto align-items-center w-auto">
+
+            <li class="nav-item dropdown hidden-caret">
+                <a class="dropdown-toggle text-white" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fas fa-user-circle"></i>
+
+                    <b>{{ app.user.surname }}, {{ app.user.name }}</b> <span class="caret"></span><br>
+                </a>
+                <ul class="dropdown-menu dropdown-user animated fadeIn ">
+                    <div class="dropdown-user-scroll scrollbar-outer">
+                        <li>
+                            <a class="dropdown-item m-3" href="{{ path('user_account_management') }}">
+                                <i class="fas fa-user-cog"></i>
+                                Gestionar tu cuenta
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item m-3" href="{{ path('logout') }}">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Cerrar sessión
+                            </a>
+                        </li>
+                    </div>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

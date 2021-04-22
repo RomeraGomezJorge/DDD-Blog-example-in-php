@@ -1,0 +1,44 @@
+author_list:
+  path: /list/{pageLabel}-{page}/{orderLabel}-{order}-{orderBy}/{limitLabel}-{limit}/{filters}
+  defaults: { _controller: App\Backoffice\Author\Infrastructure\UserInterface\Web\AuthorGetController, pageLabel: 'page' , page: 1 , orderLabel: 'order' , order: 'createAt' , orderBy: 'desc' , limitLabel: 'rows_per_page' , limit: 10 , filters: null }
+  methods:  [GET,POST]
+
+author_add:
+  path: /create
+  defaults: { _controller: App\Backoffice\Author\Infrastructure\UserInterface\Web\AuthorAddController}
+  methods:  [GET]
+
+author_add_by_modal:
+  path: /create-author-modal
+  defaults: { _controller: App\Backoffice\Author\Infrastructure\UserInterface\Web\AuthorAddModalContentController}
+  methods:  [GET]
+
+author_create:
+  path: /create
+  defaults: { _controller: App\Backoffice\Author\Infrastructure\UserInterface\Web\AuthorPostController}
+  methods:  [POST]
+
+author_create_by_ajax:
+  path: /create-by-ajax
+  defaults: { _controller: App\Backoffice\Author\Infrastructure\UserInterface\Web\AuthorPostByAjaxController}
+  methods:  [POST]
+
+author_edit:
+  path: /edit/{id}
+  defaults: { _controller: App\Backoffice\Author\Infrastructure\UserInterface\Web\AuthorEditController}
+  methods:  [GET]
+
+author_update:
+  path: /update
+  defaults: { _controller: App\Backoffice\Author\Infrastructure\UserInterface\Web\AuthorPutController}
+  methods:  [POST]
+
+author_fullname_available:
+  path: /fullname-available
+  defaults: { _controller: App\Backoffice\Author\Infrastructure\UserInterface\Web\AuthorFullnameAvailableController}
+  methods:  [GET]
+
+author_delete:
+  path: /delete
+  defaults: { _controller: App\Backoffice\Author\Infrastructure\UserInterface\Web\AuthorDeleteController}
+  methods:  [POST]

@@ -1,0 +1,42 @@
+security:
+  # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+  providers:
+    users_from_database:
+      entity:
+        class: App\Backoffice\User\Domain\User
+        property: username
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    main:
+      anonymous: lazy
+      provider: users_from_database
+      guard:
+        authenticators:
+          - App\Backoffice\Authentication\Login\LoginFormAuthenticator
+      logout:
+        path: logout
+        target: /login
+        # where to redirect after logout
+        # target: app_any_route
+      remember_me:
+        secret:   '%kernel.secret%'
+        lifetime: 604800 # 1 week in seconds
+        path:     /login
+
+      # activate different ways to authenticate
+      # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+      # https://symfony.com/doc/current/security/impersonating_user.html
+      # switch_user: true
+
+  # Easy way to control access for large sections of your site
+  # Note: Only the *first* access control that matches will be used
+  #    access_control:
+  #      - { path: '^/backoffice', roles: [ROLE_ADMIN,ROLE_USER] }
+
+
+  encoders:
+    App\Backoffice\User\Domain\User:
+      algorithm: bcrypt

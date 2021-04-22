@@ -1,0 +1,44 @@
+article_list:
+  path: /list/{pageLabel}-{page}/{orderLabel}-{order}-{orderBy}/{limitLabel}-{limit}/{filters}
+  defaults: { _controller: App\Backoffice\Article\Infrastructure\UserInterface\Web\ArticleGetController, pageLabel: 'page' , page: 1 , orderLabel: 'order' , order: 'createAt' , orderBy: 'desc' , limitLabel: 'rows_per_page' , limit: 10 , filters: null }
+  methods:  [GET,POST]
+
+article_add:
+  path: /create
+  defaults: { _controller: App\Backoffice\Article\Infrastructure\UserInterface\Web\ArticleAddController}
+  methods:  [GET]
+
+article_create:
+  path: /create
+  defaults: { _controller: App\Backoffice\Article\Infrastructure\UserInterface\Web\ArticlePostController}
+  methods:  [POST]
+
+article_edit:
+  path: /edit/{id}
+  defaults: { _controller: App\Backoffice\Article\Infrastructure\UserInterface\Web\ArticleEditController}
+  methods:  [GET]
+
+article_update:
+  path: /update
+  defaults: { _controller: App\Backoffice\Article\Infrastructure\UserInterface\Web\ArticlePutController}
+  methods:  [POST]
+
+article_delete:
+  path: /delete
+  defaults: { _controller: App\Backoffice\Article\Infrastructure\UserInterface\Web\ArticleDeleteController}
+  methods:  [POST]
+
+article_attachment_delete_confirmation_modal:
+  path: /attachment-confirmation-modal
+  defaults: { _controller: App\Backoffice\Article\Infrastructure\UserInterface\Web\AttachmentDeleteConfirmationModalController}
+  methods:  [GET]
+
+article_attachment_delete:
+  path: /attachment-delete
+  defaults: { _controller: App\Backoffice\Article\Infrastructure\UserInterface\Web\AttachmentDeleteController}
+  methods:  [POST]
+
+article_title_available:
+  path: /title-available
+  defaults: { _controller: App\Backoffice\Article\Infrastructure\UserInterface\Web\ArticleTitleAvailableController}
+  methods:  [GET]

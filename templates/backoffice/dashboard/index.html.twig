@@ -1,0 +1,77 @@
+{% extends 'base.backoffice.html.twig' %}
+{% block body %}
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-6 col-sm-4 col-lg-2">
+                <div class="card ">
+                    <a href="{{ path('article_list') }}" class="dashboard-shortcut">
+                        <div class="card-body p-3 text-center">
+                            <div class="text-right text-success">
+                                &nbsp;
+                            </div>
+                            <div class="h1 "><i class="far fa-newspaper"></i></div>
+                            <div class=" mb-3 font-weight-bold">Publicaciones</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+                <div class="card ">
+                    <a href="{{ path('category_list') }}" class="dashboard-shortcut">
+                        <div class="card-body p-3 text-center">
+                            <div class="text-right text-success">
+                                &nbsp;
+                            </div>
+                            <div class="h1 "><i class="fas fa-list-ul"></i></div>
+                            <div class=" mb-3 font-weight-bold">Categorias</div>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+                <div class="card ">
+                    <a href="{{ path('subcategory_list') }}" class="dashboard-shortcut">
+                        <div class="card-body p-3 text-center">
+                            <div class="text-right text-success">
+                                &nbsp;
+                            </div>
+                            <div class="h1 "><img src="{{ asset('assets/img/icon/subcategory.png') }}" width="32"></div>
+                            <div class=" mb-3 font-weight-bold">Subcategorias</div>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+                <div class="card ">
+                    <a href="{{ path('author_list') }}" class="dashboard-shortcut">
+                        <div class="card-body p-3 text-center">
+                            <div class="text-right text-success">
+                                &nbsp;
+                            </div>
+                            <div class="h1 "><i class="fas fa-user-edit"></i></div>
+                            <div class=" mb-3 font-weight-bold">Autores</div>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+                <div class="card">
+                    <a href="{{ path('user_list') }}" class="dashboard-shortcut">
+                        <div class="card-body p-3 text-center">
+                            <div class="text-right text-danger">
+                                &nbsp;
+                            </div>
+                            <div class="h1 "><i class="fas fa-users"></i></div>
+                            <div class="mb-3 font-weight-bold">Usuarios
+                                <div class="d-block d-sm-none">&nbsp;</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

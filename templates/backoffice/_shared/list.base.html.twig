@@ -1,0 +1,285 @@
+{% extends 'base.backoffice.html.twig' %}
+{% block body %}
+
+    <div class="page-inner">
+        <div class="page-header">
+            <h4 class="page-title">
+                <span> Listado de </span>
+                {{ page_title }}
+            </h4>
+            <ul class="breadcrumbs d-none d-sm-block">
+                <li class="nav-home">
+                    <a href="{{ path('dashboard') }}">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i> Listado
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div id="add-row_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                <div class="row ">
+                                    {# Start number of rows displayed in a list on desktop version #}
+                                    <div class="col-sm-5 d-none d-sm-block">
+                                        <div class="dataTables_length" id="add-row_length">
+                                            <form method="POST" id="number-of-rows-displayed-in-a-list"
+                                                  action="{{ path(list_path) }}/page-1/order-{{ order }}-{{ orderBy }}">
+                                                Mostrar
+                                                <select name="limit" class="form-control form-control-sm">
+                                                    <option {{ limit == 10 ?  'selected' : '' }} value="10">10</option>
+                                                    <option {{ limit == 25 ?  'selected' : '' }} value="25">25</option>
+                                                    <option {{ limit == 50 ?  'selected' : '' }} value="50">50</option>
+                                                    <option {{ limit == 100 ? 'selected' : '' }} value="100">100
+                                                    </option>
+                                                </select>
+                                                registros
+                                                <input name="filters" type="hidden" value="{{ filters }}">
+                                            </form>
+                                        </div>
+                                    </div>
+                                    {# End number of rows displayed in a list on desktop version #}
+
+                                    {# Start create an item on desktop version #}
+                                    <div class="col-sm-7 d-none d-sm-block">
+                                        {% block buttonsOnTopRightOfATable %}
+                                            <a id="createItemLink"
+                                               class="btn btn-dark  btn-round ml-auto float-right text-white"
+                                               href="{{ path(add_path) }}"
+                                            >
+                                                Crear
+                                                <span class=" ml-1 btn-label">
+                                                        <i class="fas fa-plus-circle"></i>
+                                                    </span>
+                                            </a>
+                                        {% endblock %}
+                                    </div>
+                                    {# End create an item on desktop version #}
+
+                                    <div class="col-12">
+                                        <a
+                                                href="{{ path(list_path) }}/page-{{ currentPage }}/order-{{ order }}-{{ orderBy }}/rows_per_page-{{ limit }}"
+                                                class="btn btn-black btn-border  btn-round t mr-2 btn-sm {{ filters == '' ? 'd-none':'' }}"
+                                        >
+                                                <span class="btn-label">
+                                                    <i class="fa fa-times-circle text-danger "></i>
+                                                 </span>
+                                            Limpiar Filtros de busqueda
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        {% block table %}{% endblock %}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-9">
+                                        <div class="dataTables_info" id="add-row_info" role="status" aria-live="polite">
+                                            Mostrando {{ currentPage }} de {{ totalPage }} de un total
+                                            de {{ totalItem }} resultados.
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-3">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="add-row_paginate">
+
+                                            <ul class="pagination">
+
+                                                <li class="paginate_button page-item previous d-none d-sm-block"
+                                                    id="add-row_previous">
+                                                    <a href="{{ path(list_path) }}/page-1/order-{{ order }}-{{ orderBy }}/rows_per_page-{{ limit }}/{{ filters }}"
+                                                       class="page-link">Primero</a>
+                                                </li>
+
+                                                <li class="paginate_button page-item previous" id="add-row_previous">
+                                                    <a href="{{ path(list_path) }}/page-{{ previousPage }}/order-{{ order }}-{{ orderBy }}/rows_per_page-{{ limit }}/{{ filters }}"
+                                                       class="page-link">
+                                                        <i class="fas fa-angle-left"></i>
+                                                    </a>
+                                                </li>
+
+                                                <select
+                                                        name="pageNumber"
+                                                        id="pageNumber"
+                                                        style="    border-radius: 100px !important;
+                                                                    color: #777777;
+                                                                    border-color: #ddd;
+                                                                    position: relative;
+                                                                    display: block;
+                                                                    padding: .5rem .75rem;
+                                                                    line-height: 1.25;
+                                                                    background-color: #fff;"
+
+                                                >
+                                                    {% for pageNumber in range(1,totalPage) %}
+                                                        <option
+                                                                {{ pageNumber == currentPage ? 'selected':'' }}
+                                                                data-page_url="{{ path(list_path) }}/page-{{ pageNumber }}/order-{{ order }}-{{ orderBy }}/rows_per_page-{{ limit }}/{{ filters }}"
+                                                                value="{{ pageNumber }}"
+                                                        >
+                                                            {{ pageNumber }}
+                                                        </option>
+                                                    {% endfor %}
+                                                </select>
+
+                                                <li class="paginate_button page-item next">
+                                                    <a href="{{ path(list_path) }}/page-{{ nextPage }}/order-{{ order }}-{{ orderBy }}/rows_per_page-{{ limit }}/{{ filters }}"
+                                                       class="page-link">
+                                                        <i class="fas fa-angle-right"></i>
+                                                    </a>
+                                                </li>
+
+                                                <li class="paginate_button page-item next d-none d-sm-block">
+                                                    <a href="{{ path(list_path) }}/page-{{ totalPage }}/order-{{ order }}-{{ orderBy }}/rows_per_page-{{ limit }}/{{ filters }}"
+                                                       class="page-link">Último</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# Start button to create an on mobile version #}
+    {% block buttonToCreateOnMobileVersion %}
+        <a href="{{ path(add_path) }}" class="create-button show-button-description d-block d-sm-none">
+            <i class="fas fa-plus create-icon"></i>
+        </a>
+    {% endblock %}
+    {# End button to create an on mobile version #}
+
+    {# Start button to open  modal filters on desktop version #}
+    <a href="#" class="filer-button show-button-description d-none d-sm-block text-white" data-label="Filtrar los datos"
+       data-toggle="modal" data-target="#filter-modal">
+        <i class="fas fa-search filter-icon"></i>
+    </a>
+    {# End button to open  modal filters on desktop version #}
+
+    {#  Start modal to filter items from a list on mobile and desktop version #}
+    <div class="modal" id="filter-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form id="filters-form"
+                      action="{{ path(list_path) }}/page-1/order-{{ order }}-{{ orderBy }}/rows_per_page-{{ limit }}">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Filtrar los datos del listado</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-inline">
+                            {% block filterFields %}{% endblock %}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-focus" data-dismiss="modal"
+                                id="close-delete-confirmation-modal-on-click-button-cancel">
+                        <span class="btn-label">
+                            <i class="fas fa-times-circle"></i>
+                        </span>
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-black" id="submit">
+                        <span class="btn-label">
+                            <i class="fas fa-search"></i>
+                        </span>
+                            Filtrar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {# Start modal to filter items from a list on mobile and desktop version #}
+
+    {# Start modal to confirm a delete on desktop version #}
+    <div class="modal" id="delete-confirmation-modal" aria-hidden="true">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="card-body is-loading is-loading-lg"></div>
+            </div>
+        </div>
+    </div>
+    {# End modal to confirm a delete on desktop version #}
+
+    {# Start modal to delete or edit on mobile #}
+    <div class="modal" id="mobile-actions-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-bottom" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title ml-4 pr-2">
+                        <i class="text-primary fas fa-sticky-note"></i>
+                        <b id="modal-title"></b>
+                    </h5>
+                </div>
+                <div class="modal-body ml-4">
+                    <a href="#"
+                       id="edit-mobile"
+                       class="text-dark"
+                    >
+                        <h5 class="modal-title mb-4">
+                            <i class="fa fa-edit pr-2"></i>Editar
+                        </h5>
+                    </a>
+                    <a href="#"
+                       id="delete-mobile"
+                       class="text-dark"
+                       data-toggle="modal"
+                       data-target="#delete-confirmation-modal"
+                       data-delete_path=""
+                       data-url_delete_confirmation_modal=""
+                       data-css_selector_to_handle_tr_style_that_contains_items_to_delete=""
+                       data-id_to_delete=""
+                       data-message_to_delete_confirmation=""
+                    >
+                        <h5 class="modal-title mb-4">
+                            <i class="text-dark fas fa-trash pr-2"></i>Eliminar
+                        </h5>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {# End modal to delete or edit on mobile #}
+{% endblock %}
+
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% if flash.has('message.0') %}
+        <script>
+            function getNotificationMessage() {
+                return '{{ flash.get('message.0') }}'
+            }
+        </script>
+        <script src="{{ asset('assets/js/blog/_shared/form/display.success.message.js') }}"></script>
+    {% endif %}
+    <script src="{{ asset('assets/js/blog/_shared/modal.utils.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/_shared/list/clean.filter.value.on.change.filter.field.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/_shared/list/if.pageNumber.select.change.value.go.to.that.page.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/_shared/list/submit.filters.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/_shared/list/number.of.rows.displayed.in.a.list.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/_shared/list/delete.item.on.confirm.yes.from.delete.confirm.modal.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/_shared/list/shown.delete.confirmation.modal.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/_shared/list/show.action.mobile.modal.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/_shared/list/button.filter.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#createItemLink').focus();
+        })
+    </script>
+{% endblock %}

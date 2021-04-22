@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2f57562c-a07b-4266-8457-b32c1b0301b0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../config/packages/doctrine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../public/assets/css/atlantis.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../../public/assets/css/atlantis.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../public/assets/js/blog/form/validate.form.fields.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../public/assets/js/blog/form/validate.form.fields.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../public/assets/js/plugin/jquery.validate/jquery.validate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../public/assets/js/plugin/jquery.validate/jquery.validate.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Author/Infrastructure/UserInterface/Web/AuthorGetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Author/Infrastructure/UserInterface/Web/AuthorGetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Author/Infrastructure/UserInterface/Web/TwigTemplateConstants.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Author/Infrastructure/UserInterface/Web/TwigTemplateConstants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Category/CategoryAddController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Category/CategoryAddController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Category/CategoryEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Category/CategoryEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Category/CategoryGetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Category/CategoryGetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Category/GetDeleteConfirmModalPopupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Category/GetDeleteConfirmModalPopupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Subcategory/GetDeleteConfirmModalPopupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Subcategory/GetDeleteConfirmModalPopupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Subcategory/SubcategoryAddController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Subcategory/SubcategoryAddController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Subcategory/SubcategoryEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Subcategory/SubcategoryEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Subcategory/SubcategoryGetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Category/Infrastructure/UserInterface/Web/Subcategory/SubcategoryGetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Dashboard/Infrastructure/UserInterface/Routes/dashboard_routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Dashboard/Infrastructure/UserInterface/Routes/dashboard_routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Dashboard/Infrastructure/UserInterface/Web/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Dashboard/Infrastructure/UserInterface/Web/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Post/Infrastructure/UserInterface/Web/CreateAuthorModalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Post/Infrastructure/UserInterface/Web/CreateAuthorModalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Post/Infrastructure/UserInterface/Web/PostGetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Post/Infrastructure/UserInterface/Web/PostGetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Post/Infrastructure/UserInterface/Web/TwigTemplateConstants.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Post/Infrastructure/UserInterface/Web/TwigTemplateConstants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Tag/Infrastructure/Persistence/Doctrine/TagDescription.orm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Tag/Infrastructure/UserInterface/Web/TagGetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Tag/Infrastructure/UserInterface/Web/TagGetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/Tag/Infrastructure/UserInterface/Web/TwigTemplateConstants.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/Tag/Infrastructure/UserInterface/Web/TwigTemplateConstants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Application/Create/UserCreator.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Application/Create/UserCreator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Application/Update/UserUpdate.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Application/Update/UserUpdate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Domain/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Domain/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Domain/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Domain/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/Persistence/Doctrine/User.orm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/Persistence/Doctrine/User.orm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/Persistence/MySqlUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/Persistence/MySqlUserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/DeleteConfirmModalPopupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/DeleteConfirmModalPopupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/TwigTemplateConstants.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/TwigTemplateConstants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/UserAddController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/UserAddController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/UserEditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/UserEditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/UserGetController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/UserGetController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/UserPostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/UserPostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/UserPutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Backoffice/User/Infrastructure/UserInterface/Web/UserPutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../src/Shared/Infrastructure/Symfony/WebController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../../src/Shared/Infrastructure/Symfony/WebController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/_shared/delete_confirm_modal_popup.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/_shared/delete_confirm_modal_popup.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/_shared/footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/_shared/footer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/_shared/formToHandleItem.base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/_shared/formToHandleItem.base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/_shared/list.base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/_shared/list.base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/_shared/logo_header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/_shared/logo_header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/_shared/navbar_header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/_shared/navbar_header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/_shared/sidebar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/_shared/sidebar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/author/delete_confirm_modal_popup.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/author/delete_confirm_modal_popup.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/author/formToHandleItem.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/author/formToHandleItem.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/author/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/author/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/category/delete_confirm_modal_popup.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/category/delete_confirm_modal_popup.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/category/formToHandleItem.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/category/formToHandleItem.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/category/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/category/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/dashboard/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/dashboard/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/post/create_author_modal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/post/create_author_modal.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/post/create_category_modal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/post/create_category_modal.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/post/delete_confirm_modal_popup.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/post/delete_confirm_modal_popup.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/post/formToHandleItem.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/post/formToHandleItem.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/post/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/post/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/subcategory/delete_confirm_modal_popup.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/subcategory/delete_confirm_modal_popup.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/subcategory/formToHandleItem.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/subcategory/formToHandleItem.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/subcategory/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/subcategory/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/tag/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/tag/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/tag/delete_confirm_modal_popup.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/tag/delete_confirm_modal_popup.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/tag/formToHandleItem.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/tag/formToHandleItem.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/tag/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/tag/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/user/formToHandleItem.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/user/formToHandleItem.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/user/list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/user/list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../templates/user/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/../../../templates/backoffice/user/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backoffice/User/Application/Create/UserCreatorTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backoffice/User/Application/Create/UserCreatorTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backoffice/User/Application/Update/UserUpdateTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backoffice/User/Application/Update/UserUpdateTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backoffice/User/Domain/UserMother.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backoffice/User/Domain/UserMother.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backoffice/User/Infrastructure/Specification/UniqueUserEmailSpecificationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backoffice/User/Infrastructure/Specification/UniqueUserEmailSpecificationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backoffice/User/Infrastructure/Specification/UniqueUserNameSpecificationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backoffice/User/Infrastructure/Specification/UniqueUserNameSpecificationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Backoffice/User/UserModuleUnitTestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/../../Backoffice/User/UserModuleUnitTestCase.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1lAAINTce4ZOdlYQSFnDgNK0SiP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2f57562c-a07b-4266-8457-b32c1b0301b0" name="Default Changelist" comment="" />
+      <created>1607029440433</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607029440433</updated>
+      <workItem from="1607029442070" duration="15000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

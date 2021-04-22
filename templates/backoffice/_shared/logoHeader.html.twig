@@ -1,0 +1,58 @@
+<!-- Logo Header -->
+<div class="logo-header" data-background-color="red">
+
+
+    {% set currentUrl  =  path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
+    <a href="{{ path("dashboard") }}" class="logo">
+        <img src="{{ asset('assets/img/logo.png') }}"
+             alt="navbar brand" class="navbar-brand">
+    </a>
+
+    {# Start - On mobile view the  menu icon is hide in actions  like "create" or "edit" #}
+    <button class="navbar-toggler sidenav-toggler ml-auto {{ ( ('create' in  currentUrl)  or ( 'edit' in currentUrl) )?  'd-none d-sm-block' :'' }}"
+            type="button"
+            data-toggle="collapse"
+            data-target="collapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="fas fa-bars"></i>
+                    </span>
+    </button>
+    {# End - On mobile view the  menu icon is hide in actions like "create" or "edit" #}
+
+    <button class="topbar-toggler more d-none d-sm-block">
+        <i class="fas fa-ellipsis-v"></i>
+    </button>
+
+    <div class="nav-toggle">
+        <button class="btn btn-toggle toggle-sidebar">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+
+    {# Start- On mobile view the search icon is show only in 'list' action#}
+    {% if 'list' in currentUrl %}
+        <div id="filter-mobile">
+            <a href="#" class="d-block d-sm-none text-white" data-toggle="modal" data-target="#filter-modal">
+                <i class="fas fa-search filter-icon"></i>
+            </a>
+        </div>
+    {% endif %}
+    {# End - On mobile view the search icon is show only in 'list' action#}
+
+
+    {# Start- On mobile view the go back icon is show in actions 'list' 'edit' o 'create'#}
+    {% if 'create' in  currentUrl or 'edit' in  currentUrl %}
+        <div id="back-mobile">
+            <a href="{{ path(list_path) }}" class="d-block d-sm-none text-white">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+        </div>
+    {% endif %}
+    {# End - On mobile view the go back icon is show in actions 'list' 'edit' o 'create'#}
+
+</div>
+<!-- End Logo Header -->

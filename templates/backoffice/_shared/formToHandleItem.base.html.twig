@@ -1,0 +1,61 @@
+{% extends 'base.backoffice.html.twig' %}
+{% block body %}
+    <div class="page-inner">
+        <div class="page-header">
+            <h4 class="page-title">
+                {{ action_to_do }} {{ page_title }}
+            </h4>
+            {% block breadcrumbs %}
+                <ul class="breadcrumbs d-none d-sm-block">
+                    <li class="nav-home">
+                        <a href="{{ path('dashboard') }}">
+                            <i class="flaticon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path(list_path) }}  ">Listado</a>
+                    </li>
+                    <li class="separator">
+                        <i class="flaticon-right-arrow"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">{{ action_to_do }}</a>
+                    </li>
+                </ul>
+            {% endblock %}
+
+            {% block goBackButton %}
+                <span class="back-button d-none d-sm-block">
+                    <a class="pull-right btn black" href="{{ path(list_path) }}">
+                        <small>
+                            <span class="btn-label">
+                                <i class="fas fa-chevron-circle-left"></i>
+                            </span>
+                            Volver
+                        </small>
+                    </a>
+                </span>
+            {% endblock %}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    {% block form %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block modals %}{% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/blog/_shared/form/validate.form.fields.js') }}"></script>
+    {% if flash.has('hasErrors.0') %}
+        <script src="{{ asset('assets/js/blog/_shared/form/display.error.message.on.invalid.field.js') }}"></script>
+    {% endif %}
+
+{% endblock %}

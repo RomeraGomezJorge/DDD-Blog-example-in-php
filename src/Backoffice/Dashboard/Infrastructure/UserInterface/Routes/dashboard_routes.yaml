@@ -1,0 +1,6 @@
+dashboard:
+  path: /dashboard
+  defaults: { _controller: App\Backoffice\Dashboard\Infrastructure\UserInterface\Web\DashboardController}
+  methods:  [GET]
+
+

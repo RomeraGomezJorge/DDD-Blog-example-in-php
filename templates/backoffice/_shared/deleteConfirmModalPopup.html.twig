@@ -1,0 +1,42 @@
+<div class="modal-dialog modal-confirm">
+    <div class="modal-content ">
+        <div class="modal-header flex-column">
+            <div class="icon-box text-danger" id="icon-delete-confirm">
+                <i class="far fa-trash-alt"></i>
+            </div>
+            <h4 class="modal-title w-100">¿Está seguro de que desea eliminar?</h4>
+            <button type="button"
+                    class="close d-none d-sm-block"
+                    id="close-delete-confirmation-modal-on-click-top-cross"
+                    data-dismiss="modal" aria-hidden="true"
+            >
+                ×
+            </button>
+        </div>
+        <div class="modal-body modal-message-to-delete-confirmation">{{ data_about_item|raw }}</div>
+        <div class="modal-footer justify-content-center">
+            <form id="delete-confirmation-form" action="{{ delete_path }}" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token(id) }}">
+                <input type="hidden" name="css_selector_to_handle_tr_style_that_contains_items_to_delete"
+                       value="{{ css_selector_to_handle_tr_style_that_contains_items_to_delete }}"
+                />
+                <input type="hidden" name="id" value="{{ id }}"/>
+                <button type="button" class="btn btn-focus"
+                        data-dismiss="modal"
+                        id="close-delete-confirmation-modal-on-click-button-cancel"
+                >
+                    <span class="btn-label">
+                        <i class="fas fa-times-circle"></i>
+                    </span>
+                    Cancelar
+                </button>
+                <button type="submit" class="btn btn-danger" id="confirm-delete-button">
+                    <span class="btn-label">
+                        <i class="fas fa-trash"></i>
+                    </span>
+                    Si, Eliminar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

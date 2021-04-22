@@ -1,0 +1,40 @@
+subcategory_list:
+  path: /list/{pageLabel}-{page}/{orderLabel}-{order}-{orderBy}/{limitLabel}-{limit}/{filters}
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Subcategory\SubcategoryGetController, pageLabel: 'page' , page: 1 , orderLabel: 'order' , order: 'createAt' , orderBy: 'desc' , limitLabel: 'rows_per_page' , limit: 10 , filters: null }
+  methods:  [GET,POST]
+
+subcategory_add:
+  path: /create
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Subcategory\SubcategoryAddController}
+  methods:  [GET]
+
+subcategory_create:
+  path: /create
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Subcategory\SubcategoryPostController}
+  methods:  [POST]
+
+subcategory_edit:
+  path: /edit/{id}
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Subcategory\SubcategoryEditController}
+  methods:  [GET]
+
+subcategory_update:
+  path: /update
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Subcategory\SubcategoryPutController}
+  methods:  [POST]
+
+subcategory_position_available:
+  path: /position-available
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Subcategory\SubcategoryPositionAvailableController}
+  methods:  [GET]
+
+subcategory_description_available:
+  path: /description-available
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Subcategory\SubcategoryDescriptionAvailableController}
+  methods:  [GET]
+
+subcategory_delete:
+  path: /delete
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Subcategory\SubcategoryDeleteController}
+  methods:  [POST]
+

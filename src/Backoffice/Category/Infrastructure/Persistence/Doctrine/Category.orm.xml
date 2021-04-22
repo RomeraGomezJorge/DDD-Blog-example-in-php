@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Backoffice\Category\Domain\Category" table="category">
+        <indexes>
+            <index name="parent" columns="parent"/>
+        </indexes>
+        <unique-constraints>
+            <unique-constraint name="id" columns="id"/>
+        </unique-constraints>
+        <id name="id" type="string" column="id" length="36"/>
+        <field name="description" type="string" column="description" length="255" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="createAt" type="datetime" column="createAt" nullable="false"/>
+        <field name="position" type="integer" column="position" nullable="false">
+            <options>
+                <option name="unsigned"/>
+            </options>
+        </field>
+        <field name="slug" type="string" column="slug" length="255" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <many-to-one field="parent" target-entity="Category" fetch="LAZY" inversed-by="children">
+            <join-columns>
+                <join-column name="parent" referenced-column-name="id"/>
+            </join-columns>
+        </many-to-one>
+        <one-to-many field="children" target-entity="Category" mapped-by="parent"/>
+    </entity>
+</doctrine-mapping>

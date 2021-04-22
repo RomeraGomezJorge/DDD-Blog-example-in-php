@@ -1,0 +1,93 @@
+body {
+    color: #333333;
+    font-family: 'Lato', sans-serif;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+caption h1 {
+    margin: 0;
+    line-height: 1.4;
+    font-size: 1.725rem;
+}
+
+caption small {
+    text-transform: CAPITALIZE;
+    font-size: 13px;
+}
+
+/*! CSS Used from: Embedded */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.responsive-table thead th {
+    background-color: #e01a34;
+    border: 1px solid #e01a34;
+    color: white;
+}
+
+
+.responsive-table th {
+    display: block;
+    padding: 0;
+    text-align: center;
+    white-space: normal;
+}
+
+.responsive-table th {
+    padding: 0.5em;
+    vertical-align: middle;
+}
+
+.mt-3, .my-3 {
+    margin-top: 32px;
+}
+
+.black-background {
+    background: #333333;
+    text-align: center;
+
+}
+
+
+.responsive-table th {
+    display: table-cell;
+    padding: 0.75em 0.5em;
+
+}
+
+table tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+table td, .table th {
+    border-top-width: 0px;
+    border-bottom: 1px solid;
+    border-color: #ebedf2 !important;
+    padding: 0 25px !important;
+    height: 60px;
+    vertical-align: middle !important;
+}
+
+table td.footer {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    height: 40px;
+}
+

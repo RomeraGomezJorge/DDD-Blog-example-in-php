@@ -1,0 +1,148 @@
+<aside class="sidebar sidebar-style-2">
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <div class="user d-block d-sm-none">
+                <div class="avatar-sm float-left mr-2">
+                    <i class="far fa-user-circle"></i>
+                </div>
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span>
+									{{ app.user.surname }}, {{ app.user.name }}
+									<span class="user-level">{{ app.user.role.description }}</span>
+									<span class="caret"></span>
+								</span>
+                    </a>
+                    <div class="clearfix"></div>
+
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="{{ path('user_account_management') }}">
+                                    <span class="link-collapse">Gestionar Cuenta</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('logout') }}">
+                                    <span class="link-collapse">
+                                        Cerrar Sessión
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-primary">
+
+                <li class="nav-item">
+                    <a href="{{ path('dashboard') }}">
+                        <i class="fas fa-home-alt"></i>
+                        <p>Inicio</p>
+                        <span class="caret"></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#user" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-users"></i>
+                        <p>Usuarios</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="user">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ path('user_list') }}">
+                                    <span class="sub-item">Todos los usuarios</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('user_create') }}">
+                                    <span class="sub-item"> Añadir nuevo usuario</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#category" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-th-list"></i>
+                        <p>Categorias</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="category">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ path('category_list') }}">
+                                    <span class="sub-item">Todos las categorias</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('category_create') }}">
+                                    <span class="sub-item"> Añadir nueva categoria</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('subcategory_list') }}">
+                                    <span class="sub-item">Todos las subcategorias</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('subcategory_create') }}">
+                                    <span class="sub-item"> Añadir nueva subcategoria</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#reasonForTrip" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-user-edit"></i>
+                        <p>Autores</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="reasonForTrip">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ path('author_list') }}">
+                                    <span class="sub-item">Todos los autores</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('author_list') }}">
+                                    <span class="sub-item"> Añadir nuevo autor</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#vehicle" class="collapsed" aria-expanded="false">
+                        <i class="far fa-newspaper"></i>
+                        <p>Publicaciones</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="vehicle">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ path('article_list') }}">
+                                    <span class="sub-item">Todas las publicaciónes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('article_create') }}">
+                                    <span class="sub-item">Añadir nueva publicación</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item d-block d-sm-none">
+                    <a href="{{ path('logout') }}" class="collapsed">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <p>Salir</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</aside>

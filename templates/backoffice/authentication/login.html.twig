@@ -1,0 +1,58 @@
+{% extends 'base.authentication.html.twig' %}
+{% block body %}
+    <div class="container container-login animated fadeIn" style="display: block;">
+
+        <h3 class="text-center">Inicia sesión en con tu cuenta</h3>
+        {% for flashSuccess in app.flashes('reset_password_success') %}
+            <div class="alert alert-success" role="alert">{{ flashSuccess|raw }}</div>
+        {% endfor %}
+
+        {% for flashFail in app.flashes('account_is_disabled') %}
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading"><i class="fas fa-exclamation-circle text-danger"></i> {{ flashFail|raw }}</h4>
+            </div>
+        {% endfor %}
+
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading"><i class="fas fa-exclamation-circle text-danger"></i> Credenciales no válidas.
+                </h4>
+                <p>El usuario o la contraseña ingresadas no son validadas.</p>
+            </div>
+        {% endif %}
+
+        <form method="post" id="form" novalidate="novalidate">
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="username" class="placeholder"><b>Nombre de usuario</b></label>
+                    <input type="text" value="{{ last_username }}" name="username" id="inputUserName"
+                           class="form-control" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="placeholder"><b>Contraseña</b></label>
+                    <a href="{{ path('forgot_password_request') }}" class="link float-right">¿Olvidaste tu
+                        contraseña? </a>
+                    <div class="position-relative">
+                        <input type="password" name="password" id="password" class="form-control" required>
+                        <div class="show-password">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                <div class="form-group form-action-d-flex mb-3">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="_remember_me" class="custom-control-input" id="rememberme">
+                        <label class="custom-control-label m-0" for="rememberme">Recordar</label>
+                    </div>
+                    <button type="submit" class="btn btn-dark col-md-5 float-right mt-3 mt-sm-0 fw-bold">
+                        <span class="btn-label">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </span>
+                        Entar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+user_list:
+  path: /list/{pageLabel}-{page}/{orderLabel}-{order}-{orderBy}/{limitLabel}-{limit}/{filters}
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\UserGetController, pageLabel: 'page' , page: 1 , orderLabel: 'order' , order: 'createAt' , orderBy: 'desc' , limitLabel: 'rows_per_page' , limit: 10 , filters: null }
+  methods:  [GET,POST]
+
+user_add:
+  path: /create
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\UserAddController}
+  methods:  [GET]
+
+user_create:
+  path: /create
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\UserPostController}
+  methods:  [POST]
+
+user_edit:
+  path: /edit/{id}
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\UserEditController}
+  methods:  [GET]
+
+user_update:
+  path: /update
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\UserPutController}
+  methods:  [POST]
+
+user_name_available:
+  path: /username-available
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\UserNameAvailableController}
+  methods:  [GET]
+
+user_email_available:
+  path: /email-available
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\UserEmailAvailableController}
+  methods:  [GET]
+
+user_delete:
+  path: /delete
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\UserDeleteController}
+  methods:  [POST]
+
+user_reset_password_modal:
+  path: /reset-password-modal
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\ResetPasswordModalPopupController}
+  methods:  [GET]
+
+user_reset_password:
+  path: /reset-password
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\ResetPasswordPostByAjaxController}
+  methods:  [POST]
+
+user_account_management:
+  path: /account-management
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\AccountManagementGetController}
+  methods:  [GET]
+
+user_account_update:
+  path: /update-account
+  defaults: { _controller: App\Backoffice\User\Infrastructure\UserInterface\Web\AccountPutController}
+  methods:  [POST]

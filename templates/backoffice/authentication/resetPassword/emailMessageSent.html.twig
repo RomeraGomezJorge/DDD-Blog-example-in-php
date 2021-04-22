@@ -1,0 +1,24 @@
+{% extends 'base.authentication.html.twig' %}
+{% block body %}
+    <div class="container container-login animated fadeIn" style="display: block;">
+        <h3 class="text-center">
+            <img src="{{ emailMessageSentImage }}" class="mb-3" width="97"><br>
+            Se ha enviado un correo electrónico
+        </h3>
+        <p>
+            El cual contiene un enlace que puede hacer clic para restablecer la contraseña.
+            Este enlace expirará en
+            <b>{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}</b>.
+        </p>
+        <p>Si no recibe un correo electrónico por favor revise su carpeta de spam o <a
+                    href="{{ path('forgot_password_request') }}">inténtelo de nuevo</a>.</p>
+
+        <a class="text-center btn btn-block text-dark" href="{{ path(goBackLink) }}">
+            <span class="btn-label">
+                <i class="fas fa-chevron-circle-left"></i>
+            </span>
+            Volver
+        </a>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,146 @@
+{% extends 'backoffice/_shared/list.base.html.twig' %}
+{% block title %} Listado {{ sectionTtile }} {% endblock %}
+{% block page_title %} {{ sectionTtile }} {% endblock  page_title %}
+{% block table %}
+    <table id="add-row"
+           class="display table table-striped table-hover dataTable"
+           role="grid"
+           aria-describedby="add-row_info">
+        <thead>
+        <tr role="row">
+            <th class="sorting_{{ toggleSort }} d-none d-sm-table-cell">
+                <a href="{{ path(list_path) }}/page-1/order-username-{{ toggleSort }}/rows_per_page-{{ limit }}/{{ filters }}">
+                    Usuario
+                </a>
+            </th>
+            <th class="sorting_{{ toggleSort }} d-none d-sm-table-cell">
+                <a href="{{ path(list_path) }}/page-1/order-surname-{{ toggleSort }}/rows_per_page-{{ limit }}/{{ filters }}">
+                    Apellido y nombre
+                </a>
+            </th>
+            <th class="sorting_{{ toggleSort }} d-none d-sm-table-cell">
+                <a href="{{ path(list_path) }}/page-1/order-email-{{ toggleSort }}/rows_per_page-{{ limit }}/{{ filters }}">
+                    Correo Electronico
+                </a>
+            </th>
+            <th class="sorting_{{ toggleSort }} d-none d-sm-table-cell">
+                <a href="{{ path(list_path) }}/page-1/order-role-{{ toggleSort }}/rows_per_page-{{ limit }}/{{ filters }}">
+                    Rol
+                </a>
+            </th>
+            <th class="sorting_{{ toggleSort }} d-none d-sm-table-cell">
+                <a href="{{ path(list_path) }}/page-1/order-isActive-{{ toggleSort }}/rows_per_page-{{ limit }}/{{ filters }}">
+                    Estado
+                </a>
+            </th>
+            <th class="d-none d-sm-table-cell">
+                Acción
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+
+            <tr role="row" class="odd" id="css-selector-for-tr-that_contains-items-to-delete-{{ user.id }}">
+                {# Mobile list  #}
+                <td class="d-table-cell d-sm-none cursor-pointer"
+                    data-toggle="modal"
+                    data-target="#mobile-actions-modal"
+                    data-edit_path="{{ path(edit_path, {'id': user.id}) }}"
+                    data-delete_path="{{ path(delete_path) }}"
+                    data-url_delete_confirmation_modal="{{ path(delete_confirmation_modal_path) }}"
+                    data-css_selector_to_handle_tr_style_that_contains_items_to_delete="#css-selector-for-tr-that_contains-items-to-delete-{{ user.id }}"
+                    data-id_to_delete="{{ user.id }}"
+                    data-message_to_delete_confirmation='El usuario con el nombre de usuario "{{ user.surname }}, {{ user.name }}".'
+                    data-modal_title='{{ user.surname }}, {{ user.name }}'
+                >
+                    <div class="row pt-2">
+                        <div class="col-10">
+                            <b>{{ user.surname }}, {{ user.name }} </b><br>
+                            <small>{{ user.role.description }}</small>
+                        </div>
+                        <div class="col-2">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+
+                </td>
+                {# End Mobile list #}
+                <td class="d-none d-sm-table-cell">{{ user.username }}</td>
+                <td class="d-none d-sm-table-cell">{{ user.surname }}, {{ user.name }} </td>
+                <td class="d-none d-sm-table-cell">{{ user.email }}</td>
+                <td class="d-none d-sm-table-cell">{{ user.role.description }}</td>
+                <td class="text-center d-none d-sm-table-cell">
+                    <i class="{{ user.isActive ? 'fas fa-check-circle text-success': 'text-danger fas fa-times-circle' }}"></i>
+                </td>
+                <td class="d-none d-sm-table-cell">
+
+                    <div class="form-button-dots mt-2">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+
+                    <div class="form-button-action">
+                        <a href="{{ path(edit_path, {'id': user.id}) }}"
+                           class="editItemLink btn-link btn-primary">
+                            <i class="fa fa-edit"></i>
+                        </a>
+
+                        <button type="button"
+                                class=" btn-link btn-danger shown-delete-confirmation-modal ml-4"
+                                data-toggle="modal"
+                                data-target="#delete-confirmation-modal"
+                                data-delete_path="{{ path(delete_path) }}"
+                                data-url_delete_confirmation_modal="{{ path(delete_confirmation_modal_path) }}"
+                                data-css_selector_to_handle_tr_style_that_contains_items_to_delete="#css-selector-for-tr-that_contains-items-to-delete-{{ user.id }}"
+                                data-id_to_delete="{{ user.id }}"
+                                data-message_to_delete_confirmation='El usuario con el nombre de usuario "{{ user.surname }}, {{ user.name }}".'
+                        >
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td class="text-center" colspan="6">
+                    <i class="fas fa-exclamation-circle text-info"></i> &nbsp;Ningún resultado encontrado.
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block filterFields %}
+    <div class="form-group col-12 col-sm-4">
+        <select name="filters[0][field]" id="field" class="form-control  form-control-sm w-100">
+            <option value="username">Usuario</option>
+            <option value="name">Nombre</option>
+            <option value="surname">Apellido</option>
+            <option value="email">Correo Electronico</option>
+            <option value="role">Rol</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <select name="filters[0][operator]" id="operator" class="form-control  form-control-sm w-100">
+            <option value="=">es exactamente igual</option>
+            <option value="CONTAINS">contiene</option>
+            <option value="<>">es exactamente distinto</option>
+        </select>
+    </div>
+    <div class="form-group col-12 col-sm-4">
+        <input name="filters[0][value]" id="valuesNotEqualToRole" type="text" class="form-control form-control-sm w-100"
+               placeholder="Valor..">
+
+        <select id="valuesOfRoles" class="form-control  form-control-sm d-none w-100">
+            <option> - Roles -</option>
+            {% for role in roles %}
+                <option value="{{ role.id }}">{{ role.description }} </option>
+            {% endfor %}
+        </select>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/blog/user/list/the.input.type.search.value.changes.depending.on.the.chosen.search.field.js') }}"></script>
+{% endblock %}

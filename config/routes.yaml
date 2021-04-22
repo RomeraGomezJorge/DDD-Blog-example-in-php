@@ -1,0 +1,46 @@
+user_directory:
+  resource: '../src/Backoffice/User/Infrastructure/UserInterface/Routes/user_routes.yaml'
+  prefix: /backoffice/user
+
+author_directory:
+  resource: '../src/Backoffice/Author/Infrastructure/UserInterface/Routes/author_routes.yaml'
+  prefix: /backoffice/author
+
+category_directory:
+  resource: '../src/Backoffice/Category/Infrastructure/UserInterface/Routes/category_routes.yaml'
+  prefix: /backoffice/category
+
+subcategory_directory:
+  resource: '../src/Backoffice/Category/Infrastructure/UserInterface/Routes/subcategory_routes.yaml'
+  prefix: /backoffice/subcategory
+
+article_directory:
+  resource: '../src/Backoffice/Article/Infrastructure/UserInterface/Routes/article_routes.yaml'
+  prefix: /backoffice/article
+
+reset_password_request_directory:
+  resource: '../src/Backoffice/Authentication/ResetPasswordRequest/Infrastructure/UserInterface/Routes/reset_password_request_routes.yaml'
+
+delete_confirmation_modal:
+  path: /backoffice/delete-confirm-modal
+  defaults: { _controller: App\Shared\Infrastructure\UserInterface\Web\DeleteConfirmationModalController}
+  methods:  [GET]
+
+login:
+  path: login
+  defaults: { _controller: App\Backoffice\Authentication\Login\SecurityController:login}
+  methods:  [GET,POST]
+
+logout:
+  path: logout
+  defaults: { _controller: App\Backoffice\Authentication\Login\SecurityController:logout}
+
+dashboard_directory:
+  resource: '../src/Backoffice/Dashboard/Infrastructure/UserInterface/Routes/dashboard_routes.yaml'
+  prefix: /backoffice/dashboard
+  methods:  [GET]
+
+error_page:
+  path: /backoffice/error
+  defaults: { _controller: App\Backoffice\ErrorPage\Infrastructure\UserInterface\Web\ErrorPageGetController}
+  methods:  [GET]

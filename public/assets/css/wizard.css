@@ -1,0 +1,357 @@
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+    padding-left: 0px
+}
+
+#progressbar .active {
+    color: #673AB7
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400
+}
+
+#progressbar .step0:before {
+    content: ""
+}
+
+#progressbar li:before {
+    width: 40px;
+    height: 40px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    background: #E0E0E0;
+    border-radius: 50%;
+    margin: auto;
+    padding: 2px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 10px;
+    background: #E0E0E0;
+    position: absolute;
+    left: 0;
+    top: 17px;
+    z-index: -1
+}
+
+#progressbar li:last-child:after {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px
+}
+
+#progressbar li:first-child:after {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #F9A825
+}
+
+.sub-heading {
+    font-weight: 500
+}
+
+.yellow-text {
+    color: #F9A825
+}
+
+fieldset.show {
+    display: block
+}
+
+fieldset {
+    display: none
+}
+
+.radio {
+    display: inline-block;
+    border-radius: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: #BDBDBD;
+    font-weight: 500;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%)
+}
+
+.radio:hover {
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+.radio.selected {
+    border: 1px solid #F9A825;
+    box-shadow: 0px 8px 16px 0px #EEEEEE;
+    color: #29B6F6 !important;
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    -o-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+    filter: grayscale(0%)
+}
+
+.card-block {
+    border: 1px solid #CFD8DC;
+    width: 45%;
+    margin: 2.5%;
+    padding: 20px 25px 15px 25px
+}
+
+@media screen and (max-width: 768px) {
+    .card-block {
+        padding: 20px 20px 0px 20px;
+        height: 250px
+    }
+}
+
+.icon {
+    width: 85px;
+    height: 100px
+}
+
+.image-icon {
+    width: 85px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px
+}
+
+
+select:focus,
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid skyblue !important;
+    outline-width: 0
+}
+
+
+textarea {
+    height: 100px
+}
+
+
+.fit-image {
+    width: 100%;
+    object-fit: cover
+}
+
+
+.fa-long-arrow-right {
+    float: right;
+    margin-top: 4px
+}
+
+.fa-long-arrow-left {
+    float: left;
+    margin-top: 4px
+}
+
+.set-size {
+    font-size: 6em;
+}
+
+.charts-container:after {
+    clear: both;
+    content: '';
+    display: table;
+}
+
+.pie-wrapper {
+    height: 1em;
+    width: 1em;
+    float: left;
+    margin: 15px;
+    position: relative;
+}
+
+.pie-wrapper:nth-child(3n + 1) {
+    clear: both;
+}
+
+.pie-wrapper .pie {
+    height: 100%;
+    width: 100%;
+    clip: rect(0, 1em, 1em, 0.5em);
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.pie-wrapper .pie .half-circle {
+    height: 100%;
+    width: 100%;
+    border: 0.1em solid #3498db;
+    border-radius: 50%;
+    clip: rect(0, 0.5em, 1em, 0);
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.pie-wrapper .label {
+    background: #34495e;
+    border-radius: 50%;
+    bottom: 0.4em;
+    color: #ecf0f1;
+    cursor: default;
+    display: block;
+    font-size: 0.25em;
+    font-weight: bold;
+    left: 0.4em;
+    line-height: 3.1em;
+    position: absolute;
+    right: 0.4em;
+    text-align: center;
+    top: 0.4em;
+}
+
+.pie-wrapper .label .smaller {
+    color: #bdc3c7;
+    font-size: 0.45em;
+    padding-bottom: 20px;
+    vertical-align: super;
+}
+
+.pie-wrapper .shadow {
+    height: 100%;
+    width: 100%;
+    border: 0.1em solid #bdc3c7;
+    border-radius: 50%;
+}
+
+.pie-wrapper.style-2 .label {
+    background: none;
+    color: #7f8c8d;
+}
+
+.pie-wrapper.style-2 .label .smaller {
+    color: #bdc3c7;
+}
+
+.pie-wrapper.progress-35 .pie .half-circle {
+    border-color: #e01a34;
+}
+
+.pie-wrapper.progress-35 .pie .left-side {
+    transform: rotate(127deg);
+}
+
+.pie-wrapper.progress-35 .pie .right-side {
+    display: none;
+}
+
+.pie-wrapper.progress-60 .pie {
+    clip: rect(auto, auto, auto, auto);
+}
+
+.pie-wrapper.progress-60 .pie .half-circle {
+    border-color: #e01a34;
+}
+
+.pie-wrapper.progress-60 .pie .left-side {
+    transform: rotate(216deg);
+}
+
+.pie-wrapper.progress-60 .pie .right-side {
+    transform: rotate(180deg);
+}
+
+.pie-wrapper.progress-90 .pie {
+    clip: rect(auto, auto, auto, auto);
+}
+
+.pie-wrapper.progress-90 .pie .half-circle {
+    border-color: #e67e22;
+}
+
+.pie-wrapper.progress-90 .pie .left-side {
+    transform: rotate(324deg);
+}
+
+.pie-wrapper.progress-90 .pie .right-side {
+    transform: rotate(180deg);
+}
+
+.pie-wrapper.progress-45 .pie .half-circle {
+    border-color: #1abc9c;
+}
+
+.pie-wrapper.progress-45 .pie .left-side {
+    transform: rotate(162deg);
+}
+
+.pie-wrapper.progress-45 .pie .right-side {
+    display: none;
+}
+
+.pie-wrapper.progress-75 .pie {
+    clip: rect(auto, auto, auto, auto);
+}
+
+.pie-wrapper.progress-75 .pie .half-circle {
+    border-color: #8e44ad;
+}
+
+.pie-wrapper.progress-75 .pie .left-side {
+    transform: rotate(270deg);
+}
+
+.pie-wrapper.progress-75 .pie .right-side {
+    transform: rotate(180deg);
+}
+
+.pie-wrapper.progress-100 .pie {
+    clip: rect(auto, auto, auto, auto);
+}
+
+.pie-wrapper.progress-100 .pie .half-circle {
+    border-color: #e74c3c;
+}
+
+.pie-wrapper.progress-100 .pie .left-side {
+    transform: rotate(360deg);
+}
+
+.pie-wrapper.progress-100 .pie .right-side {
+    transform: rotate(180deg);
+}
+
+.pie-wrapper--solid .label {
+    background: transparent;
+}
+
+@media (max-width: 576px) {
+    .set-size {
+        font-size: 5em;
+    }
+
+    h2 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    small {
+        font-size: 11px;
+    }
+}
+
+

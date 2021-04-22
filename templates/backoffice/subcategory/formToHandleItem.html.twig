@@ -1,0 +1,127 @@
+{% extends 'backoffice/_shared/formToHandleItem.base.html.twig' %}
+{% block form %}
+    <form action="{{ path(form_action_attribute) }}" method="post" id="form"
+          novalidate="novalidate">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="hidden" name="id" value="{{ id }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token(id) }}">
+
+                    <div class="form-group {% if flash.has('errors.parent_id') %} has-error {% endif %}">
+                        <label for="parentId">Categoria ( * )</label>
+                        <select name="parent_id" class="form-control" required>
+                            <option selected disabled> - Obligatorio -</option>
+                            {% for parent in parent_categories %}
+                                <option {{ parent_id == parent.id? 'selected':'' }}
+                                        value="{{ parent.id }}"> {{ parent.description }}</option>
+                            {% endfor %}
+                        </select>
+                        <small class="errorLabelContainer form-text text-muted text-danger">
+                            {% if flash.has('errors.parent_id') %}
+                                <span class="has-error">{{ flash.get('errors.parent_id') }} </span>
+                            {% endif %}
+                        </small>
+                    </div>
+                    <button
+                            type="button"
+                            class="btn btn-focus ml-2"
+                            data-toggle="modal"
+                            data-target="#create-category-modal"
+                            data-category_create_modal_url="{{ path(add_category_by_modal_path) }}"
+                    >
+                                <span class="btn-label">
+                                    <span class="btn-label">
+                                        <i class="fas fa-plus-circle text-success"></i>
+                                    </span>
+                                    Crear Categoria y agregarla al listado
+                                </span>
+                    </button>
+
+                    <div id="description-container"
+                         class="form-group {% if flash.has('errors.description') %} has-error {% endif %} d-none">
+                        <label>Descripción ( * )</label>
+                        <input type="text"
+                               placeholder=" - Obligatorio -"
+                               name="description"
+                               value="{{ description }}"
+                               data-description_from_database="{{ description }}"
+                               data-available_description_url="{{ path(description_available_path) }}"
+                               maxlength="100"
+                               id="description"
+                               class="form-control"
+                               required
+                               autocomplete="false"
+                               autofocus
+                        >
+                        <small class="errorLabelContainer form-text text-muted text-danger">
+                            {% if flash.has('errors.description') %}
+                                <span class="has-error">{{ flash.get('errors.description') }} </span>
+                            {% endif %}
+                        </small>
+                    </div>
+
+
+                    <div id="position-container"
+                         class="form-group {% if flash.has('errors.position') %} has-error {% endif %} d-none">
+                        <label for="position">Ubicación ( * )</label>
+                        <input type="number"
+                               name="position"
+                               value="{{ position }}"
+                               data-position_from_database="{{ position }}"
+                               data-available_position_url="{{ path(position_available_path) }}"
+                               maxlength="255"
+                               id="position"
+                               class="form-control"
+                               min="1"
+                               placeholder="- Obligatorio -"
+                               autocomplete="false"
+                               required
+                        >
+                        <small class="errorLabelContainer form-text text-muted text-danger">
+                            {% if flash.has('errors.position') %}
+                                <span class="has-error">{{ flash.get('errors.position') }} </span>
+                            {% endif %}
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-action">
+            <button class="btn btn-success col-12 col-sm-4 col-md-2 col-lg-2" type="submit" id="submitBtn">
+                <span class="btn-label">
+                    <i class="fas fa-save"></i>
+                </span>
+                {{ submit_button_label }}
+            </button>
+        </div>
+    </form>
+{% endblock %}
+
+{% block modals %}
+
+    <div class="modal" id="create-category-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box text-primary fa-3x">
+                        <i class="fas fa-sync fa-spin"></i>
+                    </div>
+                    <h4 class="modal-title w-100">Cargando...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/blog/_shared/modal.utils.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/_shared/form/click.submit.button.on.enter.key.press.in.keyboard.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/category/form/check.available.description.in.subcategory.js') }}"></script>/
+    <script src="{{ asset('assets/js/blog/category/form/check.available.position.in.subcategory.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/category/form/show.subcategory.position.if.parentId.field.is.not.null.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/category/form/reset.form.validation.when.parentId.value.is.change.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/article/form/shown.create.category.modal.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/category/form/create.category.on.confirm.yes.on.modal.js') }}"></script>
+{% endblock %}
+

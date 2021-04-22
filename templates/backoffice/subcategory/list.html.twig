@@ -1,0 +1,127 @@
+{% extends 'backoffice/_shared/list.base.html.twig' %}
+{% block title %} Listado {{ sectionTtile }} {% endblock %}
+{% block page_title %} {{ sectionTtile }} {% endblock  page_title %}
+{% block table %}
+    <table id="add-row"
+           class="display table table-striped table-hover dataTable"
+           role="grid"
+           aria-describedby="add-row_info">
+        <thead>
+        <tr role="row">
+            <th class="sorting_{{ toggleSort }} d-none d-sm-table-cell">
+                <a href="{{ path(list_path) }}/page-1/order-description-{{ toggleSort }}/rows_per_page-{{ limit }}/{{ filters }}">
+                    Descripción
+                </a>
+            </th>
+            <th class="sorting_{{ toggleSort }} d-none d-sm-table-cell">
+                <a href="{{ path(list_path) }}/page-1/order-parent-{{ toggleSort }}/rows_per_page-{{ limit }}/{{ filters }}">
+                    Categoria
+                </a>
+            </th>
+            <th class="sorting_{{ toggleSort }} d-none d-sm-table-cell">
+                <a href="{{ path(list_path) }}/page-1/order-position-{{ toggleSort }}/rows_per_page-{{ limit }}/{{ filters }}">
+                    Ubicación
+                </a>
+            </th>
+            <th class="d-none d-sm-table-cell" style="width: 132.8px;">
+                Acción
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr role="row" class="odd" id="css-selector-for-tr-that_contains-items-to-delete-{{ category.id }}">
+                <td class=" d-table-cell d-sm-none cursor-pointer"
+                    data-toggle="modal"
+                    data-target="#mobile-actions-modal"
+                    data-edit_path="{{ path(edit_path, {'id': category.id}) }}"
+                    data-delete_path="{{ path(delete_path) }}"
+                    data-url_delete_confirmation_modal="{{ path(delete_confirmation_modal_path) }}"
+                    data-css_selector_to_handle_tr_style_that_contains_items_to_delete="#css-selector-for-tr-that_contains-items-to-delete-{{ category.id }}"
+                    data-id_to_delete="{{ category.id }}"
+                    data-message_to_delete_confirmation='La provincia con la descripción "{{ category.description }}".'
+                    data-modal_title='{{ category.description }}'
+                >
+                    <div class="row pt-2">
+                        <div class="col-10"><b>{{ category.description }}</b></div>
+                        <div class="col-2"><i class="fas fa-ellipsis-v"></i></div>
+                    </div>
+                </td>
+                <td class="d-none d-sm-table-cell">{{ category.description }}</td>
+                <td class="d-none d-sm-table-cell">{{ category.parent.description }}</td>
+                <td class="d-none d-sm-table-cell">{{ category.position }}</td>
+                <td class="d-none d-sm-table-cell">
+                    <div class="d-block d-sm-none">
+                        <button type="button" class="btn btn-link text-dark">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+
+                    <div class="d-none d-sm-block">
+                    <span class="form-button-dots">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </span>
+                        <span class="form-button-action">
+                        <a href="{{ path(edit_path, {'id': category.id}) }}"
+                           class="editItemLink btn btn-link btn-primary btn-lg">
+                            <i class="fa fa-edit"></i>
+                        </a>
+
+                        <button type="button"
+                                class="btn btn-link btn-danger shown-delete-confirmation-modal"
+                                data-toggle="modal"
+                                data-target="#delete-confirmation-modal"
+                                data-delete_path="{{ path(delete_path) }}"
+                                data-url_delete_confirmation_modal="{{ path(delete_confirmation_modal_path) }}"
+                                data-css_selector_to_handle_tr_style_that_contains_items_to_delete="#css-selector-for-tr-that_contains-items-to-delete-{{ category.id }}"
+                                data-id_to_delete="{{ category.id }}"
+                                data-message_to_delete_confirmation='La provincia con la descripción "{{ category.description }}".'
+                        >
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </span>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td class="text-center" colspan="4">
+                    <i class="fas fa-exclamation-circle text-info"></i> &nbsp;Ningún resultado encontrado.
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block filterFields %}
+    <div class="form-group col-12 col-sm-4">
+        <select name="filters[0][field]" id="field" class="form-control form-control-sm w-100">
+            <option value="description">Descripción</option>
+            <option value="parent_id">Categoria</option>
+        </select>
+    </div>
+    <div class="form-group col-12 col-sm-4">
+        <select name="filters[0][operator]" id="operator" class="form-control  form-control-sm w-100">
+            <option value="=">es exactamente igual a</option>
+            <option value="CONTAINS">contiene</option>
+            <option value="<>">es exactamente distinto a</option>
+        </select>
+    </div>
+    <div class="form-group col-12 col-sm-4">
+        <input id="inputValueFilter" name="filters[0][value]" type="text" class="form-control form-control-sm w-100"
+               placeholder="Valor..">
+        <select id="selectValueFilter" class="form-control form-control-sm w-100 d-none">
+            {% for category in parent_categories %}
+                <option value="{{ category.id }}">{{ category.description }}</option>
+            {% endfor %}
+
+        </select>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/blog/category/list/if.parentId.filter.is.chosen.show.parentCategoryValues.if.not.hide.them.js') }}"></script>
+    <script src="{{ asset('assets/js/blog/category/list/if.an.entity.is.selected.as.a.filter.show.only.operator.equal.js') }}"></script>
+{% endblock %}

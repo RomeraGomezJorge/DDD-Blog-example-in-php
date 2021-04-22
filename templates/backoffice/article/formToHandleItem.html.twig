@@ -1,0 +1,622 @@
+{% extends 'backoffice/_shared/formToHandleItem.base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/wizard.css') }}">
+{% endblock %}
+{% block form %}
+    <form action="{{ path(form_action_attribute) }}"
+          method="post"
+          id="form"
+          novalidate="novalidate"
+          enctype="multipart/form-data"
+    >
+        <input type="hidden" name="id" value="{{ id }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token(id) }}">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+
+
+                    {#----------------------------------#}
+                    <fieldset class="show">
+                        <div class="pull-left">
+                             <span class="set-size charts-container">
+                                 <div class="pie-wrapper progress-35 style-2">
+                                     <span class="label"> 1 de 1</span>
+                                     <div class="pie">
+                                         <div class="left-side half-circle"></div>
+                                         <div class="right-side half-circle"></div>
+                                     </div>
+                                     <div class="shadow"></div>
+                                 </div>
+                             </span>
+                        </div>
+                        <div class="pull-left mt-4">
+                            <h2>Detalles de la publicación </h2>
+                            <small><b>Proximo:</b> Multimedia de la publicación</small>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <hr>
+                        <div class="col-lg-12">
+                            <div class="form-group {{ flash.has('errors.entry')? 'has-error': '' }}">
+                                <label>Volanta</label>
+                                <input type="text"
+                                       placeholder=" - Opcional -"
+                                       name="entry"
+                                       value="{{ entry }}"
+                                       maxlength="255"
+                                       id="entry"
+                                       class="form-control"
+                                >
+                                <small class="errorLabelContainer form-text text-muted text-danger">
+                                    <span class="has-error">{{ flash.has('errors.entry')? flash.get('errors.entry'):'' }} </span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group {{ flash.has('errors.title')? 'has-error': '' }}">
+                                <label>Titulo ( * )</label>
+                                <input type="text"
+                                       placeholder=" - Obligatorio -"
+                                       name="title"
+                                       value="{{ title }}"
+                                       data-title_from_database="{{ title }}"
+                                       data-available_title_url="{{ path(title_available_path) }}"
+                                       maxlength="255"
+                                       id="title"
+                                       class="form-control"
+                                       required
+                                >
+                                <small class="errorLabelContainer form-text text-muted text-danger">
+                                    <span class="has-error">{{ flash.has('errors.title')? flash.get('errors.title'):'' }} </span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group {{ flash.has('errors.excerpt')? 'has-error': '' }}">
+                                <label>Copete ( * )</label>
+                                <textarea placeholder=" - Obligatorio -"
+                                          name="excerpt"
+                                          maxlength="255"
+                                          id="excerpt"
+                                          class="form-control"
+                                          required
+                                          rows="3"
+
+                                >{{ excerpt }}</textarea>
+                                <small class="errorLabelContainer form-text text-muted text-danger">
+                                    <span class="has-error">{{ flash.has('errors.excerpt') ? flash.get('errors.excerpt'):'' }} </span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group {{ flash.has('errors.body')? 'has-error': '' }}">
+                                <label>Cuerpo </label>
+                                <textarea type="text"
+                                          placeholder=" - Opcional -"
+                                          name="body"
+                                          id="body"
+                                          class="form-control"
+                                          rows="5"
+
+                                >{{ body }}</textarea>
+                                <small class="errorLabelContainer form-text text-muted text-danger">
+                                    <span class="has-error">{{ flash.has('errors.body')? flash.get('errors.body'):'' }} </span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group {{ flash.has('errors.state')? 'has-error':'' }}">
+                            <div class="form-check" id="state">
+                                <label>Estado ( * )</label><br>
+                                <label class="form-radio-label">
+                                    <input class="form-radio-input"
+                                           type="radio"
+                                           name="state"
+                                           value=1
+                                            {{ state? 'checked' }}>
+                                    <span class="form-radio-sign">Publicado</span>
+                                </label>
+                                <label class="form-radio-label">
+                                    <input class="form-radio-input"
+                                           type="radio"
+                                           name="state"
+                                           value=0
+                                            {{ state?: 'checked' }}>
+                                    <span class="form-radio-sign">Borrador</span>
+                                </label>
+                                <br>
+                                <small class="errorLabelContainer form-text text-muted text-danger">
+                                    <span class="has-error">{{ flash.has('errors.state')? flash.get('errors.state'):'' }} </span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group {{ flash.has('errors.category_id')? 'has-error':'' }}">
+                                <label>Cateogoria ( * )</label>
+                                <select name="category_id" class="form-control" required>
+                                    <option selected disabled> - Obligatorio -</option>
+                                    {% for category in categories %}
+                                        <option {{ category_id == category.id ? 'selected':'' }}
+                                                value="{{ category.id }}"
+                                        >
+                                            {{ category.description }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                <small class="errorLabelContainer form-text text-muted text-danger">
+                                    <span class="has-error">{{ flash.has('errors.category_id')?flash.get('errors.category_id'):'' }} </span>
+                                </small>
+                            </div>
+                            <button
+                                    type="button"
+                                    class="btn btn-focus ml-2"
+                                    data-toggle="modal"
+                                    data-target="#create-category-modal"
+                                    data-category_create_modal_url="{{ path(add_category_by_modal_path) }}"
+                            >
+                                <span class="btn-label">
+                                    <span class="btn-label">
+                                        <i class="fas fa-plus-circle text-success"></i>
+                                    </span>
+                                    Crear Categoria y agregarla al listado
+                                </span>
+                            </button>
+                        </div>
+
+
+                        <div class="form-group {{ flash.has('errors.author_id')? 'has-error':'' }}">
+                            <div class="form-check" id="authors">
+                                <label>Autor ( * )</label><br>
+                                {% for author in authors %}
+                                    <label class="form-radio-label">
+                                        <input class="form-radio-input"
+                                               type="radio"
+                                               name="author_id"
+                                               value="{{ author.id }}"
+                                                {{ author_id == author.id? 'checked':'' }}
+                                        >
+                                        <span class="form-radio-sign">{{ author.fullname }}</span>
+                                    </label>
+                                    <br>
+                                {% endfor %}
+                                <small class="errorLabelContainer form-text text-muted text-danger">
+                                    <span class="has-error">{{ flash.has('errors.author_id')? flash.get('errors.author_id'):'' }} </span>
+                                </small>
+                            </div>
+                            <button
+                                    type="button"
+                                    class="btn btn-focus ml-2"
+                                    data-toggle="modal"
+                                    data-target="#create-author-modal"
+                                    data-author_create_modal_url="{{ path(add_author_by_modal_path) }}"
+                            >
+                                <span class="btn-label">
+                                    <span class="btn-label">
+                                        <i class="fas fa-plus-circle text-success"></i>
+                                    </span>
+                                    Crear autor y agregarlo al listado
+                                </span>
+                            </button>
+                        </div>
+                        <hr>
+                        <button type="button" id="goToVehicleDetails" class="btn btn-dark btn-block next">
+                            Siguiente
+                            <span class=" ml-1 btn-label">
+                                <i class="fas fa-forward"></i>
+                            </span>
+                        </button>
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="pull-left">
+                             <span class="set-size charts-container">
+                                 <div class="pie-wrapper progress-100 style-2">
+                                     <span class="label"> 2 de 2</span>
+                                     <div class="pie">
+                                         <div class="left-side half-circle"></div>
+                                         <div class="right-side half-circle"></div>
+                                     </div>
+                                     <div class="shadow"></div>
+                                 </div>
+                             </span>
+                        </div>
+                        <div class="pull-left mt-4">
+                            <h2>Multimedia de la publicación </h2>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <hr>
+
+                        <div class="card-header">
+                            <div class="alert alert-info mt-3">
+                                <h4><i class="fas fa-info-circle text-info"></i> Archivos permitidos</h4>
+                                <ul>
+                                    <li>mp3</li>
+                                    <li>Imagen JPG</li>
+                                    <li>Imagen JPEG</li>
+                                    <li>Imagen PNG</li>
+                                    <li>Micrcosoft Office</li>
+                                    <li>Pdf</li>
+                                    <li>Texto Plano</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {# ----- Start Uploader files ---------#}
+                        {% for file in attachment_in_session %}
+
+                            {% set file_counter =  loop.index - 1 %}
+
+                            <div class="row">
+                                <div class="col-12 col-sm-5">
+                                    <div class="form-group {{ flash.has('errors.attachment'~ (file_counter) ~'file')? 'has-error':'' }}">
+                                        <label>Archivo</label>
+                                        <input type="file"
+                                               name="attachment[0][file]"
+                                               value="{{ entry }}"
+                                               class="form-control-file form-control_file"
+                                               accept="{{ allowed_files }}"
+                                        >
+                                        <small class="errorLabelContainer form-text text-muted text-danger">
+                                            <span class="has-error">{{ flash.has('errors.attachment'~ (file_counter) ~'file')? flash.get('errors.attachment'~ (file_counter) ~'file'):'' }} </span>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group {{ flash.has('errors.attachment'~ (file_counter) ~'title')? 'has-error':'' }}">
+                                        <label>Descripción</label>
+                                        <input type="text"
+                                               placeholder=" - Opcional -"
+                                               name="attachment[0][title]"
+                                               value="{{ entry }}"
+                                               maxlength="100"
+                                               class="form-control"
+                                        >
+                                        <small class="errorLabelContainer form-text text-muted text-danger  ">
+                                            <span class="has-error">{{ flash.has('errors.attachment'~ (file_counter) ~'title')? flash.get('errors.attachment'~ (file_counter) ~'title'):'' }} </span>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                        {% endfor %}
+
+                        <section id="new_file_container"></section>
+                        <div class="clearfix"></div>
+                        <button type="button" class="add_file_button btn btn-focus  mt-2 ml-2">
+                            <i class="fas fa-plus-circle mr-1 text-success"></i>
+                            Agregar archivo
+                        </button>
+                        <div class="clearfix"></div>
+
+                        {# ----- Start Uploader files ---------#}
+
+
+                        <div class="row mt-4">
+                            <div class="col-12 col-sm-5">
+                                <div class="form-group ">
+                                    <label>Enlace youtube</label>
+                                    <input type="text"
+                                           name="youtube_video[0][url]"
+                                           value=""
+                                           class="form-control"
+                                           maxlength="100"
+                                           placeholder="- Opcional -"
+                                    >
+                                    <small class="errorLabelContainer form-text text-muted text-danger">
+                                        <span class="has-error"></span>
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Descripción</label>
+                                    <input type="text"
+                                           placeholder=" - Opcional -"
+                                           name="youtube_video[0][title]"
+                                           value=""
+                                           maxlength="255"
+                                           class="form-control"
+                                    >
+                                    <small class="errorLabelContainer form-text text-muted text-danger  ">
+                                        <span class="has-error"></span>
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-1"></div>
+                        </div>
+
+                        <section id="new_video_container"></section>
+                        <div class="clearfix"></div>
+                        <button type="button" class="add_video_button btn btn-focus  mt-2 ml-2">
+                            <i class="fas fa-plus-circle mr-1 text-success"></i>
+                            Agregar enlace de youtube
+                        </button>
+                        <div class="clearfix"></div>
+                        {# ----- End Uploader files ---------#}
+
+
+                        {#---- Start list of media files in article ------#}
+                        {% if (submit_button_label is same as('Actualizar') ) and not( attachments is empty) %}
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="add-row" class="display table table-striped table-hover dataTable"
+                                           role="grid" aria-describedby="add-row_info">
+                                        <thead>
+                                        <tr role="row">
+                                            <th class="d-none d-sm-table-cell">Vista Previa</th>
+                                            <th class="d-none d-sm-table-cell">Tipo</th>
+                                            <th class="d-none d-sm-table-cell">Descripción</th>
+                                            <th class="d-none d-sm-table-cell">
+                                                Acción
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for attachment in attachments %}
+                                            <tr role="row"
+                                                class="odd"
+                                                id="css-selector-for-tr-that_contains-items-to-delete-{{ loop.index }}"
+                                            >
+                                                {# ------ Start mobile item view ------#}
+                                                <td class=" d-table-cell d-sm-none cursor-pointer">
+                                                    <div class="row pt-2">
+                                                        <div class="col-10">
+
+                                                            {% if(attachment.type == 1) %}
+                                                                <img
+                                                                        src="{{ asset(attachment_file_directory~attachment.url) }}"
+                                                                        width="200"
+                                                                />
+                                                            {% endif %}
+                                                            {% if(attachment.type == 2) %}
+                                                                <audio src="{{ asset(attachment_file_directory~attachment.url) }}"
+                                                                       style="width: 200px" preload="auto"
+                                                                       controls=""
+                                                                ></audio>
+                                                            {% endif %}
+                                                            {% if(attachment.type == 3) %}
+                                                                <a
+                                                                        href="{{ asset(attachment_file_directory~attachment.url) }}"
+                                                                        download
+                                                                        target="_blank"
+                                                                >
+                                                                    <i class="fas fa-download"></i>
+                                                                    Descargar
+                                                                </a>
+                                                            {% endif %}
+
+                                                            {% if(attachment.type == 4) %}
+                                                                <a href="{{ asset('https://www.youtube.com/watch?v='~attachment.url) }}"
+                                                                   target="_blank">
+                                                                    <i class="fas fa-external-link-alt"></i>
+                                                                    Ir al video
+                                                                </a>
+                                                            {% endif %}
+
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <button type="button"
+                                                                    class="btn btn-link btn-danger shown-delete-confirmation-modal"
+                                                                    data-toggle="modal"
+                                                                    data-target="#delete-confirmation-modal"
+                                                                    data-delete_path="{{ path(attachment_delete_path) }}"
+                                                                    data-url_delete_confirmation_modal="{{ path(attachment_delete_modal_confirmation_path) }}"
+                                                                    data-css_selector_to_handle_tr_style_that_contains_items_to_delete="#css-selector-for-tr-that_contains-items-to-delete-{{ loop.index }}"
+                                                                    data-attachment="{{ attachment|json_encode(constant('JSON_PRETTY_PRINT')) }}"
+                                                                    data-article_id="{{ id }}"
+                                                                    data-file_to_delete="{{ attachment.url }}"
+                                                                    data-message_to_delete_confirmation="La archivo con el nombre &quot;{{ attachment.url }} &quot;."
+                                                            >
+                                                                <i class="fa fa-times"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                {# ------ End mobile item view ------#}
+
+                                                {# ------ Start desktop item view ------#}
+                                                <td class="d-none d-sm-table-cell">
+                                                    {% if(attachment.type == 1) %}
+                                                        <img
+                                                                src="{{ asset(attachment_file_directory~attachment.url) }}"
+                                                                width="100"
+                                                        />
+                                                    {% endif %}
+                                                    {% if(attachment.type == 2) %}
+                                                        <audio src="{{ asset(attachment_file_directory~attachment.url) }}"
+                                                               width=100
+                                                               preload="auto" controls=""
+                                                        ></audio>
+                                                    {% endif %}
+                                                    {% if(attachment.type == 3) %}
+                                                        <a href="{{ asset(attachment_file_directory~attachment.url) }}"
+                                                           download target="_blank"
+                                                        >
+                                                            <i class="fas fa-download"></i> Descargar
+                                                        </a>
+                                                    {% endif %}
+                                                    {% if(attachment.type == 4) %}
+                                                        <a href="{{ asset('https://www.youtube.com/watch?v='~attachment.url) }}"
+                                                           target="_blank">
+                                                            <i class="fas fa-external-link-alt"></i>
+                                                            Ir al video
+                                                        </a>
+                                                    {% endif %}
+                                                </td>
+                                                <td class="d-none d-sm-table-cell">{{ attribute(attachment_type_descriptions, attachment.type) }}</td>
+                                                <td class="d-none d-sm-table-cell">{{ attachment.title }}</td>
+                                                <td class="d-none d-sm-table-cell">
+                                                    <div class="d-block d-sm-none">
+                                                        <button type="button" class="btn btn-link text-dark">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="d-none d-sm-block">
+                                                        <button type="button"
+                                                                class="btn btn-link btn-danger shown-delete-confirmation-modal"
+                                                                data-toggle="modal"
+                                                                data-target="#delete-confirmation-modal"
+                                                                data-delete_path="{{ path(attachment_delete_path) }}"
+                                                                data-url_delete_confirmation_modal="{{ path(attachment_delete_modal_confirmation_path) }}"
+                                                                data-css_selector_to_handle_tr_style_that_contains_items_to_delete="#css-selector-for-tr-that_contains-items-to-delete-{{ loop.index }}"
+                                                                data-attachment="{{ attachment|json_encode(constant('JSON_PRETTY_PRINT')) }}"
+                                                                data-article_id="{{ id }}"
+                                                                data-file_to_delete="{{ attachment.url }}"
+                                                                data-message_to_delete_confirmation="La archivo con el nombre &quot;{{ attachment.url }} &quot;."
+                                                        >
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                                {# ------ End desktop item view------#}
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        {% endif %}
+                        {#----End list of media files in article ------#}
+
+                        <button type="button" class="btn btn-light col-sm-5 d-none d-sm-block pull-left mt-3 prev">
+                            <span class=" ml-1 btn-label">
+                                <i class="fas fa-backward"></i>
+                            </span>
+                            Anterior
+                        </button>
+
+                        <button type="submit" id="submitBtn" class="btn btn-success pull-right col-sm-5 mt-3">
+                            <span class="btn-label">
+                                <i class="fas fa-save"></i>
+                            </span>
+                            {{ submit_button_label }}
+                        </button>
+
+                        <button type="button" class="btn btn-light col-sm-5 d-block d-sm-none pull-left mt-3 prev">
+                            <span class=" ml-1 btn-label">
+                                <i class="fas fa-backward"></i>
+                            </span>
+                            Anterior
+                        </button>
+
+                    </fieldset>
+
+                    {#----------------------------------#}
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}
+
+{% block modals %}
+
+    {# Start modal to confirm a delete on desktop version #}
+    <div class="modal" id="delete-confirmation-modal" aria-hidden="true">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="card-body is-loading is-loading-lg"></div>
+            </div>
+        </div>
+    </div>
+    {# End modal to confirm a delete on desktop version #}
+
+    {# Start modal to create a new category  #}
+    <div class="modal" id="create-category-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box text-primary fa-3x">
+                        <i class="fas fa-sync fa-spin"></i>
+                    </div>
+                    <h4 class="modal-title w-100">Cargando...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# End modal to create a new category  #}
+
+    {# Start modal to create a new author  #}
+    <div class="modal" id="create-author-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box text-primary fa-3x">
+                        <i class="fas fa-sync fa-spin"></i>
+                    </div>
+                    <h4 class="modal-title w-100">Cargando...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# End modal to create a new author  #}
+
+{% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('assets/js/blog/_shared/form/click.submit.button.on.enter.key.press.in.keyboard.js') }}"></script>
+        <script src="{{ asset('assets/js/blog/_shared/list/delete.item.on.confirm.yes.from.delete.confirm.modal.js') }}"></script>
+        <script src="{{ asset('assets/js/blog/_shared/modal.utils.js') }}"></script>
+        <script src="{{ asset('assets/js/blog/article/form/wizard.js') }}"></script>
+        <script src="{{ asset('assets/js/blog/article/form/add.an.attachment.file.js') }}"></script>
+        <script src="{{ asset('assets/js/blog/article/form/add.a.youtube.video.js') }}"></script>
+        <script src="{{ asset('assets/js/blog/article/form/shown.delete.confirmation.modal.js') }}"></script>
+        <script src="{{ asset('assets/js/plugin/jquery.validate/additional-methods.js') }}"></script>
+        <script src="{{ asset('assets/js/blog/article/form/shown.create.category.modal.js') }}"></script>
+        <script src="{{ asset('assets/js/blog/article/form/shown.create.author.modal.js') }}"></script>
+        <script src="{{ asset('assets/js/blog/article/form/check.available.title.js') }}"></script>
+        <script>
+            $(document).ready(function () {
+                const allowed_files = $('input[name="attachment[0][file]"]').attr('accept');
+                $('input[name="attachment[0][file]"]').rules("add", {
+                    messages: {remote: "El archivo seleccionado no esta permito."},
+                    accept: allowed_files
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+
+                $('body').on('focusout', 'input[name*="[url]"]', function () {
+
+                    let userInputBValue = $(this).val();
+
+                    let youtube_id = youtube_parser(userInputBValue);
+
+                    if (youtube_id === false) {
+                        $(this).parent().addClass('has-error');
+                        $(this).next('.errorLabelContainer.form-text.text-muted.text-danger').html('<span class="has-error">El enlace ingresado no es valido</span>');
+                        $(this).val(userInputBValue);
+                        return
+                    }
+
+                    $(this).parent().removeClass('has-error').addClass('has-success');
+                    $(this).next('.errorLabelContainer.form-text.text-muted.text-danger').html('');
+
+                    $(this).val(youtube_parser(userInputBValue));
+
+                    function youtube_parser(url) {
+                        var regExp = /^https?\:\/\/(?:www\.youtube(?:\-nocookie)?\.com\/|m\.youtube\.com\/|youtube\.com\/)?(?:ytscreeningroom\?vi?=|youtu\.be\/|vi?\/|user\/.+\/u\/\w{1,2}\/|embed\/|watch\?(?:.*\&)?vi?=|\&vi?=|\?(?:.*\&)?vi?=)([^#\&\?\n\/<>"']*)/i;
+                        var match = url.match(regExp);
+                        return (match && match[1].length == 11) ? match[1] : false;
+                    }
+                });
+
+            })
+        </script>
+    {% endblock %}

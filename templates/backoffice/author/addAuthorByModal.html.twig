@@ -1,0 +1,93 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form action="{{ path(form_action_attribute) }}" method="post" id="create-author-form" novalidate="novalidate">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-plus-circle"></i> Crear Autor</h5>
+                <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        id="close-create-author-modal-on-click-top-cross"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input type="hidden" name="id" value="{{ id }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token(id) }}">
+                        <div class="form-group {{ flash.has('errors.fullname')? 'has-error' : '' }}">
+                            <label>Nombre ( * )</label>
+                            <input type="text"
+                                   name="fullname"
+                                   value="{{ fullname }}"
+                                   data-fullname_from_database=""
+                                   data-available_fullname_url="{{ path(fullname_available_path) }}"
+                                   maxlength="100"
+                                   class="form-control"
+                                   placeholder=" - Obligatorio -"
+                                   required
+                            >
+                            <small class="errorLabelContainer form-text text-muted text-danger">
+                                <span class="has-error">{{ flash.has('errors.fullname') ? flash.get('errors.fullname'):'' }} </span>
+                            </small>
+                        </div>
+                        <div class="form-group {{ flash.has('errors.biography')? 'has-error' :'' }}">
+                            <label>Biografía</label>
+                            <textarea
+                                    rows="4"
+                                    name="biography"
+                                    maxlength="255"
+                                    class="form-control"
+                                    placeholder=" - Opcional -"
+                            >{{ biography }}</textarea>
+                            <small class="errorLabelContainer form-text text-muted text-danger">
+                                <span class="has-error">{{ flash.has('errors.biography')? flash.get('errors.biography'):'' }} </span>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Seleccionar este autor al guardar
+                                <input type="checkbox"
+                                       checked
+                                       name="select_this_author_on_save"
+                                >
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button
+                        type="button"
+                        class="btn btn-focus"
+                        data-dismiss="modal"
+                        id="close-create-author-modal-on-click-button-cancel"
+                >
+                            <span class="btn-label">
+                                <i class="fas fa-times-circle"></i>
+                            </span>
+                    Cerrar
+                </button>
+                <button
+                        class="btn btn-success"
+                        id="create-author-submit"
+                        type="submit"
+                >
+                    <span class="btn-label">
+                        <i class="fas fa-save"></i>
+                    </span>
+                    {{ submit_button_label }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(function () {
+        $.getScript("{{ asset('assets/js/blog/_shared/modal.utils.js') }}");
+        $.getScript("{{ asset('assets/js/blog/author/form/create.author.on.confirm.yes.on.modal.js') }}");
+        $.getScript("{{ asset('assets/js/blog/author/form/check.available.fullname.js') }}");
+    });
+</script>

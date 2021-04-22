@@ -1,0 +1,49 @@
+category_list:
+  path: /list/{pageLabel}-{page}/{orderLabel}-{order}-{orderBy}/{limitLabel}-{limit}/{filters}
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryGetController, pageLabel: 'page' , page: 1 , orderLabel: 'order' , order: 'createAt' , orderBy: 'desc' , limitLabel: 'rows_per_page' , limit: 10 , filters: null }
+  methods:  [GET,POST]
+
+category_add:
+  path: /create
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryAddController}
+  methods:  [GET]
+
+category_add_by_modal:
+  path: /create-category-modal
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryAddModalController}
+  methods:  [GET]
+
+category_create:
+  path: /create
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryPostController}
+  methods:  [POST]
+
+category_create_by_ajax:
+  path: /create-by-ajax
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryPostByAjaxController}
+  methods:  [POST]
+
+category_edit:
+  path: /edit/{id}
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryEditController}
+  methods:  [GET]
+
+category_update:
+  path: /update
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryPutController}
+  methods:  [POST]
+
+category_description_available:
+  path: /description-available
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryDescriptionAvailableController}
+  methods:  [GET]
+
+category_position_available:
+  path: /position-available
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryPositionAvailableController}
+  methods:  [GET]
+
+category_delete:
+  path: /delete
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryDeleteController}
+  methods:  [POST]

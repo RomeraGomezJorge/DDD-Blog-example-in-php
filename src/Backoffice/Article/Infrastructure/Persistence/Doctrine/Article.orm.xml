@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Backoffice\Article\Domain\Article" table="article">
+        <indexes>
+            <index name="category_id" columns="category_id"/>
+            <index name="author_id" columns="author_id"/>
+        </indexes>
+        <id name="id" type="string" column="id" length="36"/>
+        <field name="entry" type="string" column="entry" length="255" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="title" type="text" column="title" length="255" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="body" type="text" column="body" length="0" nullable="true">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="state" type="string" column="state" length="50" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="createAt" type="datetime" column="create_at" nullable="false"/>
+        <field name="updateAt" type="datetime" column="update_at" nullable="true"/>
+        <field name="excerpt" type="text" column="excerpt" length="16777215" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="attachments" type="json" column="attachments" nullable="true"/>
+        <field name="slug" type="text" column="slug" length="16777215" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <many-to-one field="author" target-entity="App\Backoffice\Author\Domain\Author" fetch="LAZY">
+            <join-columns>
+                <join-column name="author_id" referenced-column-name="id"/>
+            </join-columns>
+        </many-to-one>
+        <many-to-one field="category" target-entity="App\Backoffice\Category\Domain\Category" fetch="LAZY">
+            <join-columns>
+                <join-column name="category_id" referenced-column-name="id"/>
+            </join-columns>
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

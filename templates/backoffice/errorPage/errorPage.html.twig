@@ -1,0 +1,23 @@
+{% extends 'base.backoffice.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="page-inner">
+            <div class="page-not-found">
+                <div class="wrapper not-found text-center">
+                    <h1 class="animated fadeIn">
+                        <i class="far fa-frown"></i></br>
+                        Se ha producido un error.</h1>
+                    <div class="desc animated fadeIn">
+                        {{ flash.get('message') }}
+                    </div>
+                    <a href="javascript:history.back()" class="btn btn-dark btn-back-home mt-4 animated fadeInUp">
+                    <span class="btn-label mr-2">
+                        <i class="fas fa-chevron-circle-left"></i>
+                    </span>
+                        Volver a la página anterior
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

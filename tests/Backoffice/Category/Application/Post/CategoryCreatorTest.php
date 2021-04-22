@@ -1,0 +1,184 @@
+<?php
+	
+	declare(strict_types=1);
+	
+	namespace App\Tests\Backoffice\Category\Application\Post;
+	
+	use App\Backoffice\Category\Application\Post\CategoryCreator;
+	use App\Backoffice\Category\Domain\Category;
+	use App\Backoffice\Category\Domain\Exception\UnavailableCategoryDescription;
+	use App\Backoffice\Category\Domain\Exception\UnavailableCategoryPosition;
+	use App\Tests\Backoffice\Category\CategoryModuleUnitTestCase;
+	use App\Tests\Backoffice\Category\Domain\CategoryMother;
+	use App\Tests\Shared\Domain\IntegerMother;
+	use App\Tests\Shared\Domain\UuidMother;
+	use App\Tests\Shared\Domain\WordMother;
+	use InvalidArgumentException;
+	
+	final class CategoryCreatorTest extends CategoryModuleUnitTestCase
+	{
+		private CategoryCreator $creator;
+		private Category $category;
+		private Category $subcategory;
+		
+		/** @test */
+		public function it_should_create_a_valid_category(): void
+		{
+			$this->shouldHaveUniqueCategoryDescription($this->category);
+			
+			$this->shouldHaveUniqueCategoryPosition($this->category);
+			
+			$this->shouldGenerateSlug($this->category->description());
+			
+			$this->shouldSave($this->category);
+			
+			$this->bus();
+			
+			$this->bus->shouldReceive('publish')->once()->andReturnNull();
+			
+			$this->creator->__invoke($this->category->id(),$this->category->description(),$this->category->position());
+		}
+		
+//		/** @test */
+//		public function it_should_create_a_valid_subcategory(): void
+//		{
+//			$this->shouldHaveUniqueCategoryDescription($this->subcategory);
+//
+//			$this->shouldHaveUniqueCategoryPosition($this->subcategory);
+//
+//			$this->shouldFind($this->category);
+//
+//			$this->shouldSave($this->subcategory);
+//
+//			$this->bus();
+//
+//			$this->bus->shouldReceive('publish')->once()->andReturnNull();;
+//
+//			$this->creator->__invoke(
+//				$this->subcategory->id(),
+//				$this->subcategory->description(),
+//				$this->subcategory->position(),
+//				$this->category->id());
+//		}
+//
+//		/** @test */
+//		public function it_should_throw_an_exception_when_a_category_description_is_not_available(): void
+//		{
+//			$this->expectException(UnavailableCategoryDescription::class);
+//
+//			$this->shouldNotHaveUniqueCategoryDescription($this->category);
+//
+//			$this->shouldNotSave();
+//
+//			$this->shouldNotPublish();
+//
+//			$this->creator->__invoke(
+//				$this->category->id(),
+//				$this->category->description(),
+//				$this->category->position());
+//		}
+//
+//		/** @test */
+//		public function it_should_throw_an_exception_when_a_category_position_is_not_available(): void
+//		{
+//			$this->expectException(UnavailableCategoryPosition::class);
+//
+//			$this->shouldHaveUniqueCategoryDescription($this->category);
+//
+//			$this->shouldNotHaveUniqueCategoryPosition($this->category);
+//
+//			$this->shouldNotSave();
+//
+//			$this->shouldNotPublish();
+//
+//			$this->creator->__invoke(
+//				$this->category->id(),
+//				$this->category->description(),
+//				$this->category->position());
+//		}
+//
+//		/** @test */
+//		public function it_should_throw_an_exception_when_a_subcategory_description_is_not_available(): void
+//		{
+//			$this->expectException(UnavailableCategoryDescription::class);
+//
+//			$this->shouldNotHaveUniqueCategoryDescription($this->subcategory);
+//
+//			$this->shouldFind($this->category);
+//
+//			$this->shouldNotSave();
+//
+//			$this->shouldNotPublish();
+//
+//			$this->creator->__invoke(
+//				$this->subcategory->id(),
+//				$this->subcategory->description(),
+//				$this->subcategory->position(),
+//				$this->category->id()
+//			);
+//		}
+//
+//		/** @test */
+//		public function it_should_throw_an_exception_when_a_subcategory_position_is_not_available(): void
+//		{
+//			$this->expectException(UnavailableCategoryPosition::class);
+//
+//			$this->shouldHaveUniqueCategoryDescription($this->subcategory);
+//
+//			$this->shouldNotHaveUniqueCategoryPosition($this->subcategory);
+//
+//			$this->shouldFind($this->category);
+//
+//			$this->shouldNotSave();
+//
+//			$this->shouldNotPublish();
+//
+//			$this->creator->__invoke(
+//				$this->subcategory->id(),
+//				$this->subcategory->description(),
+//				$this->subcategory->position(),
+//				$this->category->id());
+//		}
+//
+//		/** @test */
+//		public function it_should_throw_an_exception_when_the_id_is_not_valid(): void
+//		{
+//			$this->expectException(InvalidArgumentException::class);
+//
+//			$this->shouldNotSave();
+//
+//			$this->shouldNotPublish();
+//
+//			$this->creator->__invoke(UuidMother::invalid(), WordMother::random(), IntegerMother::random());
+//		}
+//
+//		/** @test */
+//		public function it_should_throw_an_exception_when_the_parent_id_is_not_valid(): void
+//		{
+//			$this->expectException(InvalidArgumentException::class);
+//
+//			$this->shouldNotSave();
+//
+//			$this->shouldNotPublish();
+//
+//			$this->creator->__invoke(UuidMother::random(), WordMother::random(), IntegerMother::random(),
+//				UuidMother::invalid());
+//		}
+		
+		protected function setUp(): void
+		{
+			parent::setUp(); // TODO: Change the autogenerated stub
+			
+			$this->creator = new CategoryCreator(
+				$this->repository(),
+				$this->categoryDescriptionIsAvailableSpecification(),
+				$this->categoryPositionIsAvailableSpecification(),
+				$this->slugGenerator(),
+				$this->bus());
+			
+			$this->category = CategoryMother::random();
+			
+			$this->subcategory = CategoryMother::randomWithParentCategory($this->category);
+		}
+	}
+
