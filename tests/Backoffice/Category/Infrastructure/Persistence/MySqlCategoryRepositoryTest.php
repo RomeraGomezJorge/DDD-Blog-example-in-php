@@ -58,7 +58,7 @@
 			$categoryFound = $this->repository()->search($this->id);
 			
 			$this->assertEquals($this->category->id(), $categoryFound->id());
-			$this->assertEquals($this->category->description(), $categoryFound->description());
+			$this->assertEquals($this->category->name(), $categoryFound->name());
 			$this->assertEquals($this->category->position(), $categoryFound->position());
 		}
 		
@@ -78,7 +78,7 @@
 			);
 			
 			$this->assertEquals($subcategory->id(), $subcategoryFound->id());
-			$this->assertEquals($subcategory->description(), $subcategoryFound->description());
+			$this->assertEquals($subcategory->name(), $subcategoryFound->name());
 			$this->assertEquals($subcategory->position(), $subcategoryFound->position());
 			$this->assertEquals($subcategory->parent()->id(), $subcategoryFound->parent()->id());
 		}
@@ -243,7 +243,7 @@
 			$this->repository()->save($category);
 			
 			$categoryCriteria = [
-				'description' => $category->description(),
+				'description' => $category->name(),
 				'parent' => self::PARENT_CATEGORY_IS_NOT_DEFINED_AS_FILTER
 			];
 			
@@ -258,7 +258,7 @@
 			$subcategory = $this->getRandomSubcategoryFromDatabase();
 			
 			$categoryCriteria = [
-				'description' => $subcategory->description(),
+				'description' => $subcategory->name(),
 				'parent' => $subcategory->parent()->id()
 			];
 			
@@ -310,7 +310,7 @@
 			
 			$this->repository()->save($category);
 			
-			$unavailableDescription = $category->description();
+			$unavailableDescription = $category->name();
 			
 			$categoryCriteria = [
 				'description' => $unavailableDescription,

@@ -82,4 +82,9 @@
 		{
 			$this->remove($Category);
 		}
+		
+		public function getAllParentCategoriesSortedByPosition():?array
+		{
+			return $this->repository(self::ENTITY_CLASS)->findBy( [],['position' => 'ASC']);
+		}
 	}

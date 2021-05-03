@@ -49,6 +49,10 @@
 					AttachmentType::DOCUMENT => 'Documento',
 					AttachmentType::YOUTUBE_VIDEO => 'Youtube'
 				],
+				'attachment_type_image' => AttachmentType::IMAGE,
+				'attachment_type_audio' => AttachmentType::AUDIO,
+				'attachment_type_document' => AttachmentType::DOCUMENT,
+				'attachment_type_youtube_type' => AttachmentType::YOUTUBE_VIDEO,
 				'attachment_file_directory' => $this->getParameter('article_attachment_directory'),
 				'title_available_path' => TwigTemplateConstants::TITLE_AVAILABLE_PATH,
 				'form_action_attribute' => TwigTemplateConstants::UPDATE_PATH,

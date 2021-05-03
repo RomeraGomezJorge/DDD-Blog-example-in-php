@@ -73,12 +73,15 @@
 				}
 				
 				if (strtotime((string)$value)) {
+					
+					echo "<br>";
+					echo $value;
+					echo "<br>";
+					
 					$newDate = new DateTime($value);
 					
-					$newDate = $newDate->format("Y-m-d H:i:s");
-					
-					var_export($newDate);
-					
+					$newDate = $newDate->format("Y-m-d H:i:s") ;
+
 					$value = new DateTime($newDate);
 				}
 				

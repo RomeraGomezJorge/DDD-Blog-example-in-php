@@ -26,9 +26,10 @@
 			return $this->render(TwigTemplateConstants::ADD_CATEGORY_BY_MODAL_FILE_PATH, [
 				'form_action_attribute' => TwigTemplateConstants::CREATE_BY_AJAX_PATH,
 				'id' => $this->ramseyUuidGenerator->generate(),
+				'name' => $this->flashSession->get('inputs.name'),
 				'description' => $this->flashSession->get('inputs.description'),
 				'position' => $this->flashSession->get('inputs.position'),
-				'description_available_path' => TwigTemplateConstants::DESCRIPTION_AVAILABLE_PATH,
+				'name_available_path' => TwigTemplateConstants::NAME_AVAILABLE_PATH,
 				'position_available_path' => TwigTemplateConstants::POSITION_AVAILABLE_PATH,
 				'submit_button_label' => FormConstant::SUBMIT_BUTTON_VALUE_TO_CREATE,
 			])->getContent();

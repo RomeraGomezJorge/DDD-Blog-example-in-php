@@ -5,9 +5,9 @@
 	namespace App\Tests\Backoffice\Category\Domain;
 	
 	use App\Backoffice\Category\Domain\Category;
-	use App\Backoffice\Category\Domain\CategoryDescriptionIsAvailableSpecification;
+	use App\Backoffice\Category\Domain\CategoryNameIsAvailableSpecification;
 	use App\Backoffice\Category\Domain\CategoryPositionIsAvailableSpecification;
-	use App\Backoffice\Category\Domain\ValueObject\CategoryDescription;
+	use App\Backoffice\Category\Domain\ValueObject\CategoryName;
 	use App\Backoffice\Category\Domain\ValueObject\CategoryPosition;
 	use App\Shared\Domain\SlugGenerator;
 	use App\Shared\Domain\ValueObject\Uuid;
@@ -56,7 +56,7 @@
 			
 			return Category::create(
 				$id,
-				new CategoryDescription($description),
+				new CategoryName($description),
 				new CategoryPosition($position),
 				$category, new DateTime(),
 				$categoryDescriptionIsAvailableSpecificationStub,
@@ -67,7 +67,7 @@
 		
 		public function uniqueCategoryDescriptionSpecificationStub()
 		{
-			return $this->createMock(CategoryDescriptionIsAvailableSpecification::class);
+			return $this->createMock(CategoryNameIsAvailableSpecification::class);
 		}
 		
 		public function uniqueCategoryPositionSpecificationStub()

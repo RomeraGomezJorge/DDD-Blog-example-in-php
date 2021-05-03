@@ -1,0 +1,19 @@
+{% extends 'base.website.html.twig' %}
+{% block main %}
+
+    {% include 'website/home/slide.html.twig' %}
+
+    {% include 'website/home/contactNumbers.html.twig' %}
+
+    <!-- Start banner -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <img src="{{ asset('assets/website/images/ley_micaela.jpg') }}" class="col-xs-12">
+            </div>
+        </div>
+    </section>
+    <!--/ End banner -->
+
+    {{ render(controller('App\\WebSite\\\Infrastructure\\UserInterface\\Web\\Home\\WebsiteLastArticleFromEachCategoryGetController')) }}
+{% endblock %}

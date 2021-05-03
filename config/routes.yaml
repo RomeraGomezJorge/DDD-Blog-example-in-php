@@ -21,6 +21,9 @@ article_directory:
 reset_password_request_directory:
   resource: '../src/Backoffice/Authentication/ResetPasswordRequest/Infrastructure/UserInterface/Routes/reset_password_request_routes.yaml'
 
+website_directory:
+  resource: '../src/Website/Infrastructure/UserInterface/Routes/website_routes.yaml'
+
 delete_confirmation_modal:
   path: /backoffice/delete-confirm-modal
   defaults: { _controller: App\Shared\Infrastructure\UserInterface\Web\DeleteConfirmationModalController}

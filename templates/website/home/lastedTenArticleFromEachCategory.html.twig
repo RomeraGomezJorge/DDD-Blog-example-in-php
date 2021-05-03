@@ -1,0 +1,336 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-9  col-xs-12">
+
+            {% for category in categories %}
+                {% if articles[category.name] is defined %}
+                    <!-- Start Blogs -->
+                    <section id="blog-main" class="blog-main section">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="section-title">
+                                    <h1>{{ category.name }}</h1>
+                                    <p>{{ category.description }} </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="blog-main">
+
+                                <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                                    <!-- Blog Sticky -->
+                                    <div class="single-blog sticky">
+                                        <div class="blog-post">
+                                            {% if attachment.hasAtLeastOneImage(articles[category.name].mainArticle.attachments) %}
+                                                <div class="blog-head">
+                                                    <img src="{{ asset(attachment.getFirstImage(articles[category.name].mainArticle.attachments)~medium_image_extension) }}"/>
+                                                </div>
+                                            {% endif %}
+                                            <div class="blog-info">
+                                                <h2>
+                                                    <a href="blog-single.html">{{ articles[category.name].mainArticle.title }}
+                                                </h2>
+                                                <div class="meta">
+                                                    <span><i class="fa fa-user"></i>
+                                                        <a href="#">
+                                                            {{ articles[category.name].mainArticle.author_fullname }}
+                                                        </a>
+                                                    </span>
+                                                    <span><i class="fa fa-calendar-o"></i>{{ articles[category.name].mainArticle.create_at|date('d/m/Y') }}</span>
+                                                </div>
+                                                <p>{{ articles[category.name].mainArticle.excerpt }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ End Blog Sticky-->
+                                </div>
+
+                                <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                                    <div class="blog-slider">
+                                        <!-- Single Slider -->
+                                        {% for article in articles[category.name].slideArticles %}
+
+                                            <div class="single-blog single-slider">
+                                                <div class="blog-post">
+                                                    {% if attachment.hasAtLeastOneImage(article.attachments) %}
+                                                        <div class="blog-head">
+                                                            <a href="blog-single.html">
+                                                                <img src="{{ asset(attachment.getFirstImage(article.attachments)~small_image_extension) }}">
+                                                            </a>
+                                                        </div>
+                                                    {% endif %}
+                                                    <div class="blog-info">
+                                                        <h2>
+                                                            <a href="blog-single.html">
+                                                                {{ article.title }}
+                                                            </a>
+                                                        </h2>
+                                                        <div class="meta">
+                                                                    <span>
+                                                                        <i class="fa fa-user"></i>
+                                                                        <a href="#">{{ article.author_fullname }}</a>
+                                                                    </span>
+                                                            <span><i class="fa fa-calendar-o"></i>{{ article.create_at|date('d/m/Y') }}</span>
+
+                                                        </div>
+                                                        <p>
+                                                            {{ article.excerpt }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/ End Single Slider -->
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                    <!--/ End Blog -->
+                {% endif %}
+            {% endfor %}
+
+            <!-- Start Projects -->
+            <section id="projects" class="projects section">
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="section-title">
+                                <h1>Campañas</h1>
+                                <p>It has roots in a piece Distinctio tenetur, dolores aperiam, quasi perferendis nemo
+                                    mollitia</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <!-- project Nav -->
+                            <div class="project-nav">
+                                <ul class="cbp-l-filters-work" id="project-menu">
+                                    <li data-filter="*" class="cbp-filter-item active">Todas
+                                        <div class="cbp-filter-counter"></div>
+                                    </li>
+                                    <li data-filter=".webdesign" class="cbp-filter-item">Campaña 1
+                                        <div class="cbp-filter-counter"></div>
+                                    </li>
+                                    <li data-filter=".development" class="cbp-filter-item">Campaña 2
+                                        <div class="cbp-filter-counter"></div>
+                                    </li>
+                                    <li data-filter=".branding" class="cbp-filter-item">Campaña 3
+                                        <div class="cbp-filter-counter"></div>
+                                    </li>
+                                    <li data-filter=".package" class="cbp-filter-item">Campaña 4
+                                        <div class="cbp-filter-counter"></div>
+                                    </li>
+                                    <li data-filter=".video" class="cbp-filter-item">Campaña 5
+                                        <div class="cbp-filter-counter"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--/ End project Nav -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div id="project-item" class="cbp">
+                                <div class="cbp-item  webdesign development video branding package">
+                                    <!-- Single Project -->
+                                    <div class="project-single">
+                                        <div class="project-inner">
+                                            <div class="project-head">
+                                                <img src="images/campania/1.jpg" alt="#">
+                                            </div>
+                                            <div class="project-bottom">
+                                                <h4><a href="project-single.html">Powerfull Theme</a><span
+                                                            class="category">Development</span></h4>
+                                            </div>
+                                            <div class="button">
+                                                <a href="https://www.youtube.com/watch?v=E-2ocmhF6TA"
+                                                   class="btn video-play cbp-lightbox"><i class="fa fa-play"></i></a>
+                                                <a href="project-single.html" class="btn"><i class="fa fa-link"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ End Single Project -->
+                                </div>
+                                <div class="cbp-item  webdesign branding package">
+                                    <!-- Single Project -->
+                                    <div class="project-single">
+                                        <div class="project-inner">
+                                            <div class="project-head">
+                                                <img src="images/campania/2.jpg" alt="#">
+                                            </div>
+                                            <div class="project-bottom">
+                                                <h4><a href="project-single.html">Crazy Design</a><span
+                                                            class="category">Branding</span></h4>
+                                            </div>
+                                            <div class="button">
+                                                <a data-fancybox="portfolio" href="images/project/2.jpg" class="btn"><i
+                                                            class="fa fa-photo"></i></a>
+                                                <a href="project-single.html" class="btn"><i class="fa fa-link"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ End Single Project -->
+                                </div>
+                                <div class="cbp-item  webdesign development video">
+                                    <!-- Single Project -->
+                                    <div class="project-single">
+                                        <div class="project-inner">
+                                            <div class="project-head">
+                                                <img src="images/campania/3.jpg" alt="#">
+                                            </div>
+                                            <div class="project-bottom">
+                                                <h4><a href="project-single.html">Bootstrap Framework</a><span
+                                                            class="category">Development</span></h4>
+                                            </div>
+                                            <div class="button">
+                                                <a href="https://www.youtube.com/watch?v=E-2ocmhF6TA"
+                                                   class="btn video-play cbp-lightbox"><i class="fa fa-play"></i></a>
+                                                <a href="project-single.html" class="btn"><i class="fa fa-link"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ End Single Project -->
+                                </div>
+                                <div class="cbp-item branding development">
+                                    <!-- Single Project -->
+                                    <div class="project-single">
+                                        <div class="project-inner">
+                                            <div class="project-head">
+                                                <img src="images/project/4.jpg" alt="#">
+                                            </div>
+                                            <div class="project-bottom">
+                                                <h4><a href="project-single.html">Fully Responsive</a><span
+                                                            class="category">Branding</span></h4>
+                                            </div>
+                                            <div class="button">
+                                                <a data-fancybox="portfolio" href="images/project/4.jpg" class="btn"><i
+                                                            class="fa fa-photo"></i></a>
+                                                <a href="project-single.html" class="btn"><i class="fa fa-link"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ End Single Project -->
+                                </div>
+                                <div class="cbp-item  webdesign development video">
+                                    <!-- Single Project -->
+                                    <div class="project-single">
+                                        <div class="project-inner">
+                                            <div class="project-head">
+                                                <img src="images/project/5.jpg" alt="#">
+                                            </div>
+                                            <div class="project-bottom">
+                                                <h4><a href="project-single.html">Easy To Use</a><span class="category">Development</span>
+                                                </h4>
+                                            </div>
+                                            <div class="button">
+                                                <a href="https://www.youtube.com/watch?v=E-2ocmhF6TA"
+                                                   class="btn video-play cbp-lightbox"><i class="fa fa-play"></i></a>
+                                                <a href="project-single.html" class="btn"><i class="fa fa-link"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ End Single Project -->
+                                </div>
+                                <div class="cbp-item  webdesign development branding">
+                                    <!-- Single Project -->
+                                    <div class="project-single">
+                                        <div class="project-inner">
+                                            <div class="project-head">
+                                                <img src="images/project/6.jpg" alt="#">
+                                            </div>
+                                            <div class="project-bottom">
+                                                <h4><a href="project-single.html">Modern Design</a><span
+                                                            class="category">Printing</span></h4>
+                                            </div>
+                                            <div class="button">
+                                                <a data-fancybox="portfolio" href="images/project/6.jpg" class="btn"><i
+                                                            class="fa fa-photo"></i></a>
+                                                <a href="project-single.html" class="btn"><i class="fa fa-link"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ End Single Project -->
+                                </div>
+                            </div>
+                            <!-- Load More -->
+                            <div id="loadMore" class="cbp-l-loadMore-button">
+                                <div class="load-button">
+                                    <a href="more-project/project.html" class="cbp-l-loadMore-link btn primary"
+                                       rel="nofollow">
+                                        <span class="cbp-l-loadMore-defaultText">LOAD MORE</span>
+                                        <span class="cbp-l-loadMore-loadingText">LOADING...</span>
+                                        <span class="cbp-l-loadMore-noMoreLoading">NO MORE WORKS</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--/ End Load More -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--/ End Projects -->
+
+
+            <!-- Start Clients -->
+            <section id="clients" class="clients section">
+                <div class="">
+                    <div class="	">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="clients-slider">
+                                <!-- Single Clients -->
+                                <div class="single-clients">
+                                    <a href="#" target="_blank"><img src="images/client1.png" alt="#"></a>
+                                </div>
+                                <!--/ End Single Clients -->
+                                <!-- Single Clients -->
+                                <div class="single-clients active">
+                                    <a href="#" target="_blank"><img src="images/client2.png" alt="#"></a>
+                                </div>
+                                <!--/ End Single Clients -->
+                                <!-- Single Clients -->
+                                <div class="single-clients">
+                                    <a href="#" target="_blank"><img src="images/client3.png" alt="#"></a>
+                                </div>
+                                <!--/ End Single Clients -->
+                                <!-- Single Clients -->
+                                <div class="single-clients">
+                                    <a href="#" target="_blank"><img src="images/client4.png" alt="#"></a>
+                                </div>
+                                <!--/ End Single Clients -->
+                                <!-- Single Clients -->
+                                <div class="single-clients">
+                                    <a href="#" target="_blank"><img src="images/client1.png" alt="#"></a>
+                                </div>
+                                <!--/ End Single Clients -->
+                                <!-- Single Clients -->
+                                <div class="single-clients">
+                                    <a href="#" target="_blank"><img src="images/client2.png" alt="#"></a>
+                                </div>
+                                <!--/ End Single Clients -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--/ End Clients -->
+        </div>
+
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v9.0"
+                nonce="5aJ7WxKf"></script>
+        <div class="col-md-3" style="background: red">
+            <div class="fb-page" data-href="https://www.facebook.com/mujerydiversidadlarioja" data-tabs="timeline"
+                 data-width="" data-height="" data-small-header="false" data-adapt-container-width="true"
+                 data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/mujerydiversidadlarioja" class="fb-xfbml-parse-ignore"><a
+                            href="https://www.facebook.com/mujerydiversidadlarioja">Secretaría de la Mujer y
+                        Diversidad</a></blockquote>
+            </div>
+        </div>
+    </div>
+</div>

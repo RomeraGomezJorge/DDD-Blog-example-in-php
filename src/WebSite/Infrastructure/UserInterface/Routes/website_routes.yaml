@@ -1,0 +1,11 @@
+home:
+  path: /
+  defaults: { _controller: App\WebSite\Infrastructure\UserInterface\Web\Home\WebsiteHomeGetController }
+  methods:  [GET]
+
+article:
+  path: /article/{slug}
+  defaults: { _controller: App\WebSite\Infrastructure\UserInterface\Web\Article\WebsiteArticleGetController }
+  methods:  [GET]
+
+

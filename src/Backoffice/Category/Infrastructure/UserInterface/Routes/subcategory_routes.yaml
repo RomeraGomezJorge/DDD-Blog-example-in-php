@@ -28,9 +28,9 @@ subcategory_position_available:
   defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Subcategory\SubcategoryPositionAvailableController}
   methods:  [GET]
 
-subcategory_description_available:
-  path: /description-available
-  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Subcategory\SubcategoryDescriptionAvailableController}
+subcategory_name_available:
+  path: /name-available
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Subcategory\SubcategoryNameAvailableController}
   methods:  [GET]
 
 subcategory_delete:

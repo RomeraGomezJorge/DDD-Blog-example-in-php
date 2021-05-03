@@ -21,12 +21,12 @@
 		): Response {
 			return $this->render(TwigTemplateConstants::FORM_FILE_PATH, [
 				'list_path' => TwigTemplateConstants::LIST_PATH,
-				'description_available_path' => TwigTemplateConstants::DESCRIPTION_AVAILABLE_PATH,
+				'name_available_path' => TwigTemplateConstants::NAME_AVAILABLE_PATH,
 				'position_available_path' => TwigTemplateConstants::POSITION_AVAILABLE_PATH,
 				'add_category_by_modal_path' => CategoryTwigTemplateConstants::ADD_CATEGORY_BY_MODAL_PATH,
 				'page_title' => TwigTemplateConstants::SECTION_TITLE,
 				'id' => $ramseyUuidGenerator->generate(),
-				'description' => $flashSession->get('inputs.description'),
+				'name' => $flashSession->get('inputs.name'),
 				'position' => $flashSession->get('inputs.position'),
 				'parent_id' => $flashSession->get('inputs.parent_id'),
 				'parent_categories' => $relatedEntities->getAllParentCategoriesSortedAlphabetically(),

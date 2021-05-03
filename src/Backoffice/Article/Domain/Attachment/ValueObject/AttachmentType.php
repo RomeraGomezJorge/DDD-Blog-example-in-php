@@ -8,10 +8,10 @@
 	
 	class AttachmentType
 	{
-		const IMAGE = "1";
-		const AUDIO = "2";
-		const DOCUMENT = "3";
-		const YOUTUBE_VIDEO = "4";
+		const IMAGE = "image";
+		const AUDIO = "audio";
+		const DOCUMENT = "document";
+		const YOUTUBE_VIDEO = "youtube";
 		const VALID_TYPES = [self::IMAGE, self::AUDIO, self::DOCUMENT, self::YOUTUBE_VIDEO];
 		private $type;
 		

@@ -6,7 +6,7 @@
 	
 	
 	use App\Backoffice\Category\Domain\Category;
-	use App\Backoffice\Category\Domain\CategoryDescriptionIsAvailableSpecification;
+	use App\Backoffice\Category\Domain\CategoryNameIsAvailableSpecification;
 	use App\Backoffice\Category\Domain\CategoryPositionIsAvailableSpecification;
 	use App\Backoffice\Category\Domain\CategoryRepository;
 	use App\Shared\Domain\Bus\Event\EventBus;
@@ -40,9 +40,9 @@
 				->andReturn(self::DESCRIPTION_IS_AVAILABLE);
 		}
 		
-		protected function categoryDescriptionIsAvailableSpecification(): CategoryDescriptionIsAvailableSpecification
+		protected function categoryDescriptionIsAvailableSpecification(): CategoryNameIsAvailableSpecification
 		{
-			return $this->categoryDescriptionIsAvailableSpecification = $this->categoryDescriptionIsAvailableSpecification ?: $this->mock(CategoryDescriptionIsAvailableSpecification::class);
+			return $this->categoryDescriptionIsAvailableSpecification = $this->categoryDescriptionIsAvailableSpecification ?: $this->mock(CategoryNameIsAvailableSpecification::class);
 		}
 		
 		protected function slugGenerator(): SlugGenerator

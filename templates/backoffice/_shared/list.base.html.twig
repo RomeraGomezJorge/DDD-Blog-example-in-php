@@ -153,14 +153,14 @@
     </div>
     {# Start button to create an on mobile version #}
     {% block buttonToCreateOnMobileVersion %}
-        <a href="{{ path(add_path) }}" class="create-button show-button-description d-block d-sm-none">
+        <a href="{{ path(add_path) }}" class="create-button show-button-name d-block d-sm-none">
             <i class="fas fa-plus create-icon"></i>
         </a>
     {% endblock %}
     {# End button to create an on mobile version #}
 
     {# Start button to open  modal filters on desktop version #}
-    <a href="#" class="filer-button show-button-description d-none d-sm-block text-white" data-label="Filtrar los datos"
+    <a href="#" class="filer-button show-button-name d-none d-sm-block text-white" data-label="Filtrar los datos"
        data-toggle="modal" data-target="#filter-modal">
         <i class="fas fa-search filter-icon"></i>
     </a>

@@ -18,6 +18,7 @@
 	use DateTime;
 	use DateTimeInterface;
 	use Doctrine\Common\Collections\ArrayCollection;
+	use Ramsey\Collection\Collection;
 	
 	
 	class Article extends AggregateRoot
@@ -145,7 +146,7 @@
 			return $this;
 		}
 		
-		public function removeAttachment(Attachment $attachment): self
+		public function removeAttachment(Attachment $attachment): void
 		{
 			$attachments = new ArrayCollection($this->attachments);
 			
@@ -153,9 +154,8 @@
 				$attachments->removeElement($attachment->toArray());
 			}
 			
-			$this->attachments = $attachments->toArray();
-			
-			return $this;
+			/*  Reorder  index array after removeElement()*/
+			$this->attachments = array_values($attachments->toArray());
 		}
 		
 		public function id(): string
@@ -206,5 +206,15 @@
 		public function updateAt(): DateTime
 		{
 			return $this->updateAt;
+		}
+		
+		public function slug():string
+		{
+			return $this->slug;
+		}
+		
+		public function attachements():array
+		{
+			return $this->attachments;
 		}
 	}

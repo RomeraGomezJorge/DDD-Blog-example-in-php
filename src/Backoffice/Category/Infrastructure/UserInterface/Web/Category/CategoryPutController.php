@@ -32,6 +32,7 @@
 		{
 			$updater->__invoke(
 				$request->get('id'),
+				$request->get('name'),
 				$request->get('description'),
 				(int)$request->get('position')
 			);

@@ -5,7 +5,7 @@ $(document).ready(function () {
 
         setTimeout(
             function () {
-                $('.filer-button').removeClass('show-button-description');
+                $('.filer-button').removeClass('show-button-name');
             }, 4000
         );
 

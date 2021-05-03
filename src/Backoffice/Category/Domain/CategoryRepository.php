@@ -22,4 +22,6 @@
 		public function delete(Category $Category): void;
 		
 		public function isAvailable(array $criteria);
+		
+		public function getAllParentCategoriesSortedByPosition():?array;
 	}

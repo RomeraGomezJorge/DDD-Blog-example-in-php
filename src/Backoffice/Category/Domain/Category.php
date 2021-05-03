@@ -4,11 +4,12 @@
 	
 	namespace App\Backoffice\Category\Domain;
 	
+	use App\Backoffice\Category\Domain\ValueObject\CategoryDescription;
 	use App\Shared\Domain\SlugGenerator;
 	use DateTimeInterface;
-	use App\Backoffice\Category\Domain\Exception\UnavailableCategoryDescription;
+	use App\Backoffice\Category\Domain\Exception\UnavailableCategoryName;
 	use App\Backoffice\Category\Domain\Exception\UnavailableCategoryPosition;
-	use App\Backoffice\Category\Domain\ValueObject\CategoryDescription;
+	use App\Backoffice\Category\Domain\ValueObject\CategoryName;
 	use App\Backoffice\Category\Domain\ValueObject\CategoryPosition;
 	use App\Shared\Domain\Aggregate\AggregateRoot;
 	use App\Shared\Domain\ValueObject\Uuid;
@@ -17,7 +18,8 @@
 	class Category extends AggregateRoot
 	{
 		private string $id;
-		private string $description;
+		private string $name;
+		private ?string $description;
 		private int $position;
 		private ?Category $parent;
 		private $children;
@@ -27,64 +29,68 @@
 
 		public static function create(
 			Uuid $id,
+			CategoryName $name,
 			CategoryDescription $description,
 			CategoryPosition $position,
 			?Category $parent,
 			DateTimeInterface $createAt,
-			CategoryDescriptionIsAvailableSpecification $categoryDescriptionIsAvailableSpecification,
+			CategoryNameIsAvailableSpecification $categoryNameIsAvailableSpecification,
 			CategoryPositionIsAvailableSpecification $categoryPositionIsAvailableSpecification,
 			SlugGenerator $slugGenerator
 		): self {
 			$category = new self();
 			$category->id = $id->value();
+			$category->name = $name->value();
 			$category->description = $description->value();
 			$category->position = $position->value();
 			$category->createAt = $createAt;
 			$category->parent = $parent;
-			$category->slug = $slugGenerator->generate($description->value());
+			$category->slug = $slugGenerator->generate($name->value());
 			
-			if (!$categoryDescriptionIsAvailableSpecification->isSatisfiedBy($category)) {
-				throw new UnavailableCategoryDescription($description);
+			if (!$categoryNameIsAvailableSpecification->isSatisfiedBy($category)) {
+				throw new UnavailableCategoryName($name);
 			}
 			
 			if (!$categoryPositionIsAvailableSpecification->isSatisfiedBy($category)) {
 				throw new UnavailableCategoryPosition($position);
 			}
 			
-			$category->recordThat(CategoryWasCreated::with($id->value(), $description->value(),
+			$category->recordThat(CategoryWasCreated::with($id->value(), $name->value(),
 				$position->__toString()));
 			
 			return $category;
 		}
 		
 		public function changeDetails(
-			CategoryDescription $aNewDescription,
+			CategoryName $aNewName,
+			CategoryDescription $aDescription,
 			CategoryPosition $aNewPosition,
 			?Category $aNewParent,
-			CategoryDescriptionIsAvailableSpecification $categoryDescriptionIsAvailableSpecification,
+			CategoryNameIsAvailableSpecification $categoryNameIsAvailableSpecification,
 			CategoryPositionIsAvailableSpecification $categoryPositionIsAvailableSpecification,
 			SlugGenerator $slugGenerator
 		):self
 		{
-			$this->changeDescription($aNewDescription, $categoryDescriptionIsAvailableSpecification);
+			$this->changeName($aNewName, $categoryNameIsAvailableSpecification);
 			$this->changePosition($aNewPosition, $categoryPositionIsAvailableSpecification);
+			$this->description = $aDescription->value();
 			$this->parent = $aNewParent;
-			$this->slug = $slugGenerator->generate($this->description);
+			$this->slug = $slugGenerator->generate($this->name);
 			return $this;
 		}
 		
-		private function changeDescription(
-			CategoryDescription $aNewDescription,
-			CategoryDescriptionIsAvailableSpecification $categoryDescriptionIsAvailableSpecification
+		private function changeName(
+			CategoryName $aNewName,
+			CategoryNameIsAvailableSpecification $categoryNameIsAvailableSpecification
 		): void {
-			if ($aNewDescription->isEqual($this->description)) {
+			if ($aNewName->isEqual($this->name)) {
 				return;
 			}
 			
-			$this->description = $aNewDescription->value();
+			$this->name = $aNewName->value();
 			
-			if (!$categoryDescriptionIsAvailableSpecification->isSatisfiedBy($this)) {
-				throw new UnavailableCategoryDescription($aNewDescription);
+			if (!$categoryNameIsAvailableSpecification->isSatisfiedBy($this)) {
+				throw new UnavailableCategoryName($aNewName);
 			}
 		}
 		
@@ -108,7 +114,12 @@
 			return $this->id;
 		}
 		
-		public function description(): string
+		public function name(): string
+		{
+			return $this->name;
+		}
+		
+		public function description(): ?string
 		{
 			return $this->description;
 		}

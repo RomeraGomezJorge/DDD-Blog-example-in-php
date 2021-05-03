@@ -10,7 +10,12 @@
             <unique-constraint name="id" columns="id"/>
         </unique-constraints>
         <id name="id" type="string" column="id" length="36"/>
-        <field name="description" type="string" column="description" length="255" nullable="false">
+        <field name="name" type="string" column="name" length="255" nullable="false">
+            <options>
+                <option name="fixed"/>
+            </options>
+        </field>
+        <field name="description" type="string" column="description" length="255" nullable="true">
             <options>
                 <option name="fixed"/>
             </options>

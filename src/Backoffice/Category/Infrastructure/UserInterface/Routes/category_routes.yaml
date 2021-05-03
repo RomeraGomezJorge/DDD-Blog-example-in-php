@@ -33,9 +33,9 @@ category_update:
   defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryPutController}
   methods:  [POST]
 
-category_description_available:
-  path: /description-available
-  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryDescriptionAvailableController}
+category_name_available:
+  path: /name-available
+  defaults: { _controller: App\Backoffice\Category\Infrastructure\UserInterface\Web\Category\CategoryNameAvailableController}
   methods:  [GET]
 
 category_position_available:

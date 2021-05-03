@@ -29,17 +29,17 @@
 			
 			$this->shouldFindOnThePage(
 				$this->client,
-				$this->Category->description()
+				$this->Category->name()
 			);
 			
 			$this->shouldFindOnThePage(
 				$this->client,
-				$anotherCategory->description()
+				$anotherCategory->name()
 			);
 			
 			$this->shouldFindOnThePage(
 				$this->client,
-				$someOtherCategory->description()
+				$someOtherCategory->name()
 			);
 		}
 		
@@ -64,12 +64,12 @@
 			
 			$this->isOnPage(
 				$this->client,
-				self::LIST_CATEGORY_ITEMS_PATH . '/page-1/order-createAt-desc/rows_per_page-10/filters%5B0%5D%5Bfield%5D=' . $filterByField . '&filters%5B0%5D%5Boperator%5D=%3D&filters%5B0%5D%5Bvalue%5D=' . $anotherCategory->description()
+				self::LIST_CATEGORY_ITEMS_PATH . '/page-1/order-createAt-desc/rows_per_page-10/filters%5B0%5D%5Bfield%5D=' . $filterByField . '&filters%5B0%5D%5Boperator%5D=%3D&filters%5B0%5D%5Bvalue%5D=' . $anotherCategory->name()
 			);
 			
 			$this->shouldFindOnThePage(
 				$this->client,
-				$anotherCategory->description()
+				$anotherCategory->name()
 			);
 		}
 		

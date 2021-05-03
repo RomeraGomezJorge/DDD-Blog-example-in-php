@@ -145,7 +145,7 @@
                                         <option {{ category_id == category.id ? 'selected':'' }}
                                                 value="{{ category.id }}"
                                         >
-                                            {{ category.description }}
+                                            {{ category.name }}
                                         </option>
                                     {% endfor %}
                                 </select>
@@ -259,7 +259,7 @@
                                         <label>Archivo</label>
                                         <input type="file"
                                                name="attachment[0][file]"
-                                               value="{{ entry }}"
+                                               value="{{ file.file }}"
                                                class="form-control-file form-control_file"
                                                accept="{{ allowed_files }}"
                                         >
@@ -275,7 +275,7 @@
                                         <input type="text"
                                                placeholder=" - Opcional -"
                                                name="attachment[0][title]"
-                                               value="{{ entry }}"
+                                               value="{{ file.file }}"
                                                maxlength="100"
                                                class="form-control"
                                         >
@@ -298,7 +298,6 @@
                         <div class="clearfix"></div>
 
                         {# ----- Start Uploader files ---------#}
-
 
                         <div class="row mt-4">
                             <div class="col-12 col-sm-5">
@@ -427,26 +426,26 @@
 
                                                 {# ------ Start desktop item view ------#}
                                                 <td class="d-none d-sm-table-cell">
-                                                    {% if(attachment.type == 1) %}
+                                                    {% if(attachment.type == attachment_type_image) %}
                                                         <img
                                                                 src="{{ asset(attachment_file_directory~attachment.url) }}"
                                                                 width="100"
                                                         />
                                                     {% endif %}
-                                                    {% if(attachment.type == 2) %}
+                                                    {% if(attachment.type == attachment_type_audio) %}
                                                         <audio src="{{ asset(attachment_file_directory~attachment.url) }}"
                                                                width=100
                                                                preload="auto" controls=""
                                                         ></audio>
                                                     {% endif %}
-                                                    {% if(attachment.type == 3) %}
+                                                    {% if(attachment.type == attachment_type_document) %}
                                                         <a href="{{ asset(attachment_file_directory~attachment.url) }}"
                                                            download target="_blank"
                                                         >
                                                             <i class="fas fa-download"></i> Descargar
                                                         </a>
                                                     {% endif %}
-                                                    {% if(attachment.type == 4) %}
+                                                    {% if(attachment.type == attachment_type_youtube_type) %}
                                                         <a href="{{ asset('https://www.youtube.com/watch?v='~attachment.url) }}"
                                                            target="_blank">
                                                             <i class="fas fa-external-link-alt"></i>
@@ -569,6 +568,8 @@
 {% endblock %}
     {% block javascripts %}
         {{ parent() }}
+        <script src="{{ asset('assets/js/plugin/jquery.validate/additional-methods.js') }}"></script>
+        <script src="{{ asset('assets/js/plugin/niceEdit/nicEdit.js') }}"></script>
         <script src="{{ asset('assets/js/blog/_shared/form/click.submit.button.on.enter.key.press.in.keyboard.js') }}"></script>
         <script src="{{ asset('assets/js/blog/_shared/list/delete.item.on.confirm.yes.from.delete.confirm.modal.js') }}"></script>
         <script src="{{ asset('assets/js/blog/_shared/modal.utils.js') }}"></script>
@@ -576,47 +577,13 @@
         <script src="{{ asset('assets/js/blog/article/form/add.an.attachment.file.js') }}"></script>
         <script src="{{ asset('assets/js/blog/article/form/add.a.youtube.video.js') }}"></script>
         <script src="{{ asset('assets/js/blog/article/form/shown.delete.confirmation.modal.js') }}"></script>
-        <script src="{{ asset('assets/js/plugin/jquery.validate/additional-methods.js') }}"></script>
         <script src="{{ asset('assets/js/blog/article/form/shown.create.category.modal.js') }}"></script>
         <script src="{{ asset('assets/js/blog/article/form/shown.create.author.modal.js') }}"></script>
         <script src="{{ asset('assets/js/blog/article/form/check.available.title.js') }}"></script>
-        <script>
-            $(document).ready(function () {
-                const allowed_files = $('input[name="attachment[0][file]"]').attr('accept');
-                $('input[name="attachment[0][file]"]').rules("add", {
-                    messages: {remote: "El archivo seleccionado no esta permito."},
-                    accept: allowed_files
-                });
-            });
+        <script src="{{ asset('assets/js/blog/article/form/get.youtube.id.from.url.js') }}"></script>
+        <script src="{{ asset('assets/js/blog/article/form/validate.if.the.selected.file.is.allowed.to.upload.js') }}"></script>
+        <script type="text/javascript">
+            new nicEditor({fullPanel : true,maxHeight: 300}).panelInstance('body');
         </script>
-        <script>
-            $(document).ready(function () {
 
-                $('body').on('focusout', 'input[name*="[url]"]', function () {
-
-                    let userInputBValue = $(this).val();
-
-                    let youtube_id = youtube_parser(userInputBValue);
-
-                    if (youtube_id === false) {
-                        $(this).parent().addClass('has-error');
-                        $(this).next('.errorLabelContainer.form-text.text-muted.text-danger').html('<span class="has-error">El enlace ingresado no es valido</span>');
-                        $(this).val(userInputBValue);
-                        return
-                    }
-
-                    $(this).parent().removeClass('has-error').addClass('has-success');
-                    $(this).next('.errorLabelContainer.form-text.text-muted.text-danger').html('');
-
-                    $(this).val(youtube_parser(userInputBValue));
-
-                    function youtube_parser(url) {
-                        var regExp = /^https?\:\/\/(?:www\.youtube(?:\-nocookie)?\.com\/|m\.youtube\.com\/|youtube\.com\/)?(?:ytscreeningroom\?vi?=|youtu\.be\/|vi?\/|user\/.+\/u\/\w{1,2}\/|embed\/|watch\?(?:.*\&)?vi?=|\&vi?=|\?(?:.*\&)?vi?=)([^#\&\?\n\/<>"']*)/i;
-                        var match = url.match(regExp);
-                        return (match && match[1].length == 11) ? match[1] : false;
-                    }
-                });
-
-            })
-        </script>
     {% endblock %}

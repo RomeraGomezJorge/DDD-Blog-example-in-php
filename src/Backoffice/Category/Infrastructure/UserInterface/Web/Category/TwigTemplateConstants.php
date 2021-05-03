@@ -14,7 +14,7 @@
 		const ADD_CATEGORY_BY_MODAL_PATH = 'category_add_by_modal';
 		const UPDATE_PATH = 'category_update';
 		const DELETE_PATH = 'category_delete';
-		const DESCRIPTION_AVAILABLE_PATH = 'category_description_available';
+		const NAME_AVAILABLE_PATH = 'category_name_available';
 		const POSITION_AVAILABLE_PATH = 'category_position_available';
 		const SECTION_TITLE = 'Categoria';
 		const FORM_FILE_PATH = 'backoffice/category/formToHandleItem.html.twig';

@@ -23,4 +23,10 @@
 		public function delete(Article $article): void;
 		
 		public function isAvailable(array $criteria): bool;
+		
+		public function findLastedTenArticleFromEachCategory():?array ;
+		
+		public function searchBySlug(string $slug):?Article;
+		
+//		public function searchNextArticle();
 	}

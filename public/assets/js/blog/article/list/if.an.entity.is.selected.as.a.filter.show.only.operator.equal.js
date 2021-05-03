@@ -4,7 +4,7 @@ $(document).ready(function () {
 
         if ($(this).val() === 'category') {
             $('select[name="filters[0][operator]"]  option').each(function () {
-                if ($(this).val() == 'CONTAINS' || $(this).val() == '<>') {
+                if ($(this).val() != '=' ) {
                     $(this).hide();
                 }
             });

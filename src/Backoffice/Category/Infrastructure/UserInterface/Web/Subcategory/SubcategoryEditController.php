@@ -23,12 +23,12 @@
 			
 			return $this->render(TwigTemplateConstants::FORM_FILE_PATH, [
 				'page_title' => TwigTemplateConstants::SECTION_TITLE,
-				'description_available_path' => TwigTemplateConstants::DESCRIPTION_AVAILABLE_PATH,
+				'name_available_path' => TwigTemplateConstants::NAME_AVAILABLE_PATH,
 				'position_available_path' => TwigTemplateConstants::POSITION_AVAILABLE_PATH,
 				'list_path' => TwigTemplateConstants::LIST_PATH,
 				'add_category_by_modal_path' => CategoryTwigTemplateConstants::ADD_CATEGORY_BY_MODAL_PATH,
 				'id' => $category->id(),
-				'description' => $category->description(),
+				'name' => $category->name(),
 				'position' => $category->position(),
 				'parent_id' => $category->parent()->id(),
 				'parent_categories' => $relatedEntities->getAllParentCategoriesSortedAlphabetically(),

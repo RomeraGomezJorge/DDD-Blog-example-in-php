@@ -22,7 +22,7 @@
 			
 			$form = $crawler->selectButton('submitBtn')->form();
 			
-			$form['description'] = $subcategory->description();
+			$form['description'] = $subcategory->name();
 			
 			$form['position'] = $subcategory->position();
 			

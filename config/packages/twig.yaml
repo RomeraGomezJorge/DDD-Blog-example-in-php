@@ -5,3 +5,5 @@ twig:
   exception_controller: null
   globals:
     flash: '@App\Shared\Infrastructure\Symfony\FlashSession'
+    attachment: '@App\Shared\Infrastructure\Symfony\Attachment'
+    socialShareURLs: '@App\Shared\Infrastructure\Symfony\SocialShareURLs'

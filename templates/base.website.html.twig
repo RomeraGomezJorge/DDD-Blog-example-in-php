@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <!-- Meta tag -->
+    {% block meta_tags %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="SITE KEYWORDS HERE"/>
+    <meta name="description"
+          content="La Secretaría de la Mujer y Diversidad es un organismo estatal de la Provincia de La Rioja que trabaja en la implementación de una política estatal para el desarrollo integral que consolide la perspectiva de género y la diversidad.">
+
+
+    {% endblock %}
+
+    <!-- Title Tag -->
+    <title>Secretaria de la mujer y diversidad</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('assets/website/images/favicon.gif') }}" sizes="32x32">
+
+    {% block stylesheets %}
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="{{ asset('assets/website/css/bootstrap.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/website/css/theme-plugins.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/website/css/style.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/website/css/responsive.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/website/css/skin/skin1.css') }}"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet"/>
+    {% endblock %}
+
+    {% block javascript_in_header %}
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    {% endblock %}
+
+</head>
+<body id="bg" style="">
+
+
+<!-- Start Header -->
+<header id="header" class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="{{ path('home') }}"><img src="{{  asset('assets/website/images/logo.png') }}" alt="logo"></a>
+                </div>
+                <!--/ End Logo -->
+                <div class="mobile-nav"></div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <!-- Header Widget -->
+                <div class="header-widget">
+                    <!-- Single Widget -->
+                    <div class="single-widget">
+                        <i class="fa fa-clock-o"></i>
+                        <h4>Horario de Atención</h4>
+                        <p>Lunes-Viernes: 08:00-13.00</p>
+                    </div>
+                    <!--/ End Single Widget -->
+                    <!-- Single Widget -->
+                    <div class="single-widget">
+                        <i class="fa fa-envelope"></i>
+                        <h4>Correo Electronico</h4>
+                        <p><a href="prensamujerydiversidad@gmail.com">prensamujerydiversidad@gmail.com</a></p>
+                    </div>
+                    <!--/ End Single Widget -->
+                    <!-- Single Widget -->
+                    <div class="single-widget">
+                        <i class="fa fa-phone"></i>
+                        <h4>Telefono</h4>
+                        <p>0380 464-0054</p>
+                    </div>
+                    <!--/ End Single Widget -->
+                </div>
+                <!--/ End Header Widget -->
+            </div>
+        </div>
+    </div>
+    <!-- Header Inner -->
+    <div class="header-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="nav-area">
+                        <!-- Main Menu -->
+                        {{ render(controller('App\\WebSite\\\Infrastructure\\UserInterface\\Web\\WebsiteMenuGetController')) }}
+                        <!--/ End Main Menu -->
+                        <!-- Social -->
+                        <ul class="social">
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="active"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                        <!--/ End Social -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Inner -->
+</header>
+<!--/ End Header -->
+
+{% block main %}{% endblock %}
+
+
+<!-- Start Footer -->
+<footer id="footer" class="footer dark">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <!-- Address Widget -->
+                    <div class="single-widget address">
+                        <h2>Head Office</h2>
+                        <p>Lorem ipsum dolor sit amet, consectet adipisicing elit, sed do eiusmod temporia.</p>
+                        <ul class="list">
+                            <li><i class="fa fa-phone"></i>Phone: +123 456-7890</li>
+                            <li><i class="fa fa-envelope"></i>Email:<a href="mailto:info@youremail.com">Info@youremail.com</a>
+                            </li>
+                            <li><i class="fa fa-map-o"></i>Address: Road no 3, Khilgaon 1200, Dhaka Bangladesh</li>
+                        </ul>
+                        <ul class="social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                    </div>
+                    <!--/ End Address Widget -->
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <!-- Links Widget -->
+                    <div class="single-widget links">
+                        <h2>Quick Links</h2>
+                        <ul class="list">
+                            <li><a href="about-us.html"><i class="fa fa-angle-right"></i>About Our Company</a></li>
+                            <li><a href="services.html"><i class="fa fa-angle-right"></i>Our Latest services</a></li>
+                            <li><a href="projects-masonry.html"><i class="fa fa-angle-right"></i>Our Recent Project</a>
+                            </li>
+                            <li><a href="blogs-right-sidebar.html"><i class="fa fa-angle-right"></i>Latest Blog</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i>Help Desk</a></li>
+                            <li><a href="contact.html"><i class="fa fa-angle-right"></i>Contact With Us</a></li>
+                        </ul>
+                    </div>
+                    <!--/ End Links Widget -->
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <!-- Twitter Widget -->
+                    <div class="single-widget twitter">
+                        <h2>Recent Tweets</h2>
+                        <div class="single-tweet">
+                            <i class="fa fa-twitter"></i>
+                            <p><a href="#">@Tromas</a> Mirum est notare quam littera gothica, quam nunc</p>
+                            <span>4 Minutes Ago</span>
+                        </div>
+                        <div class="single-tweet">
+                            <i class="fa fa-twitter"></i>
+                            <p><a href="#">@Tromas</a> claram, anteposuerit litterarum</p>
+                            <span>3 Hourse Ago</span>
+                        </div>
+                        <div class="single-tweet">
+                            <i class="fa fa-twitter"></i>
+                            <p><a href="#">@Tromas</a> per seacula quarta decima et quinta decima.</p>
+                            <span>5 Hourse Ago</span>
+                        </div>
+                    </div>
+                    <!--/ End Twitter Widget -->
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <!-- Gallery Widget -->
+                    <div class="single-widget photo-gallery">
+                        <h2>Photo Gallery</h2>
+                        <ul class="list">
+                            <li><a href="images/gallery-1.jpg" data-fancybox="photo"><img src="images/gallery-1.jpg"
+                                                                                          alt="#"></a></li>
+                            <li><a href="images/gallery-2.jpg" data-fancybox="photo"><img src="images/gallery-2.jpg"
+                                                                                          alt="#"></a></li>
+                            <li><a href="images/gallery-3.jpg" data-fancybox="photo"><img src="images/gallery-3.jpg"
+                                                                                          alt="#"></a></li>
+                            <li><a href="images/gallery-4.jpg" data-fancybox="photo"><img src="images/gallery-4.jpg"
+                                                                                          alt="#"></a></li>
+                            <li><a href="images/gallery-5.jpg" data-fancybox="photo"><img src="images/gallery-5.jpg"
+                                                                                          alt="#"></a></li>
+                            <li><a href="images/gallery-6.jpg" data-fancybox="photo"><img src="images/gallery-6.jpg"
+                                                                                          alt="#"></a></li>
+                            <li><a href="images/gallery-7.jpg" data-fancybox="photo"><img src="images/gallery-7.jpg"
+                                                                                          alt="#"></a></li>
+                            <li><a href="images/gallery-8.jpg" data-fancybox="photo"><img src="images/gallery-8.jpg"
+                                                                                          alt="#"></a></li>
+                            <li><a href="images/gallery-9.jpg" data-fancybox="photo"><img src="images/gallery-9.jpg"
+                                                                                          alt="#"></a></li>
+                        </ul>
+                    </div>
+                    <!--/ End Gallery Widget -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <!-- copyright -->
+                    <div class="copyright">
+                        <p>&copy; 2017 All Right Reserved. Design & Developed By <a href="#">codeglim</a></p>
+                    </div>
+                    <!--/ End Copyright -->
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--/ End footer -->
+
+{% block javascript_at_the_bottom %}
+    <script src="{{ asset('assets/website/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/website/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/website/js/modernizr.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/website/js/tromas.js')}}"  type="text/javascript"></script>
+    <script src="{{ asset('assets/website/js/theme-plugins.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/website/js/gmap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/website/js/main.js')}}"  type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnhgNBg6jrSuqhTeKKEFDWI0_5fZLx0vM" type="text/javascript"></script>
+{% endblock %}
+</div>
+</body>
+</html>

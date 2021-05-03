@@ -19,9 +19,10 @@
 			return $this->render(TwigTemplateConstants::FORM_FILE_PATH, [
 				'page_title' => TwigTemplateConstants::SECTION_TITLE,
 				'list_path' => TwigTemplateConstants::LIST_PATH,
-				'description_available_path' => TwigTemplateConstants::DESCRIPTION_AVAILABLE_PATH,
+				'name_available_path' => TwigTemplateConstants::NAME_AVAILABLE_PATH,
 				'position_available_path' => TwigTemplateConstants::POSITION_AVAILABLE_PATH,
 				'id' => $category->id(),
+				'name' => $category->name(),
 				'description' => $category->description(),
 				'position' => $category->position(),
 				'form_action_attribute' => TwigTemplateConstants::UPDATE_PATH,

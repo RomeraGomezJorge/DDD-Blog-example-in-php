@@ -8,8 +8,9 @@
 	
 	final class RelatedEntities
 	{
-		const DISPLAY_ALL_ITEMS = [];
-		const SORT_A_LIST_BY_DESCRIPTION = 'description';
+		const SHOW_ALL_ITEMS = [];
+		const SORT_A_LIST_BY_NAME = 'name';
+		const SORT_A_LIST_BY_POSITION = 'position';
 		const SORT_A_LIST_BY_FULLNAME = 'fullname';
 		const SORT_A_LIST_ALPHABETICALLY = 'asc';
 		const LIST_BEGIN_ON_0 = 0;
@@ -29,7 +30,7 @@
 		
 		public function getAllAuthorsSortedAlphabetically(): array
 		{
-			return $this->authorsByCriteriaSearcher->__invoke(self::DISPLAY_ALL_ITEMS,
+			return $this->authorsByCriteriaSearcher->__invoke(self::SHOW_ALL_ITEMS,
 				self::SORT_A_LIST_BY_FULLNAME,
 				self::SORT_A_LIST_ALPHABETICALLY,
 				self::LIST_END_ON_1000,
@@ -40,8 +41,28 @@
 		{
 			return $this->categoriesByCriteriaSearcher->__invoke(
 				CategoryFilterUtils::filterToDisplayParent(),
-				self::SORT_A_LIST_BY_DESCRIPTION,
+				self::SORT_A_LIST_BY_NAME,
 				self::SORT_A_LIST_ALPHABETICALLY,
+				self::LIST_END_ON_1000,
+				self::LIST_BEGIN_ON_0);
+		}
+		
+		public function getAllParentCategoriesSortedByPosition(): array
+		{
+			return $this->categoriesByCriteriaSearcher->__invoke(
+				CategoryFilterUtils::filterToDisplayParent(),
+				self::SORT_A_LIST_BY_POSITION,
+				'asc',
+				self::LIST_END_ON_1000,
+				self::LIST_BEGIN_ON_0);
+		}
+		
+		public function getCategoriesSortedByPosition(): array
+		{
+			return $this->categoriesByCriteriaSearcher->__invoke(
+				self::SHOW_ALL_ITEMS,
+				self::SORT_A_LIST_BY_POSITION,
+				'asc',
 				self::LIST_END_ON_1000,
 				self::LIST_BEGIN_ON_0);
 		}

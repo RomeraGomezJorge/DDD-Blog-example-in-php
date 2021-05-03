@@ -6,7 +6,7 @@
 	
 	use App\Backoffice\Category\Application\Post\CategoryCreator;
 	use App\Backoffice\Category\Domain\Category;
-	use App\Backoffice\Category\Domain\Exception\UnavailableCategoryDescription;
+	use App\Backoffice\Category\Domain\Exception\UnavailableCategoryName;
 	use App\Backoffice\Category\Domain\Exception\UnavailableCategoryPosition;
 	use App\Tests\Backoffice\Category\CategoryModuleUnitTestCase;
 	use App\Tests\Backoffice\Category\Domain\CategoryMother;
@@ -28,7 +28,7 @@
 			
 			$this->shouldHaveUniqueCategoryPosition($this->category);
 			
-			$this->shouldGenerateSlug($this->category->description());
+			$this->shouldGenerateSlug($this->category->name());
 			
 			$this->shouldSave($this->category);
 			
@@ -36,7 +36,7 @@
 			
 			$this->bus->shouldReceive('publish')->once()->andReturnNull();
 			
-			$this->creator->__invoke($this->category->id(),$this->category->description(),$this->category->position());
+			$this->creator->__invoke($this->category->id(),$this->category->name(),$this->category->position());
 		}
 		
 //		/** @test */

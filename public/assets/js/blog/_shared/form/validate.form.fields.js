@@ -3,8 +3,8 @@ $(document).ready(function () {
     $("#form").validate({
 
         onfocusout: function (element) {
-            if (element.tagName === "TEXTAREA" || (element.tagName === "INPUT" && element.type !== "password")) {
-                element.value = $.trim(element.value).toString();
+            if (element.tagName === "TEXTAREA" || (element.tagName === "INPUT" && element.type !== "password" && element.type !== "file")) {
+                element.value = $.trim(element.value.toString());
             }
 
             /* validate a field on focus out*/

@@ -46,7 +46,7 @@ function submitsFormViaAjaxWhenIsValid(createCategoryForm) {
 
     const id = $(createCategoryModalSelector + ' input[name="id"]').val();
 
-    const description = $(createCategoryModalSelector + ' input[name="description"]').val();
+    const name = $(createCategoryModalSelector + ' input[name="name"]').val();
 
     const isSelectThisCategoryChecked = $('input[name="select_this_category_on_save"]').is(':checked');
 
@@ -70,7 +70,7 @@ function submitsFormViaAjaxWhenIsValid(createCategoryForm) {
 
             enableCloseModalWhenClickOutside(createCategoryModalSelector);
 
-            createNewSelectOptionInCategory(id, description, isSelectThisCategoryChecked);
+            createNewSelectOptionInCategory(id, name, isSelectThisCategoryChecked);
         },
         error: function () {
             const errorDetails = 'La categoria no se creó, si el problema persiste ponte en contacto con soporte tecnico';
@@ -84,11 +84,14 @@ function submitsFormViaAjaxWhenIsValid(createCategoryForm) {
 }
 
 
-function createNewSelectOptionInCategory(id, description, isSelectThisCategoryChecked) {
+function createNewSelectOptionInCategory(id, name, isSelectThisCategoryChecked) {
     const selected = isSelectThisCategoryChecked ? 'selected="selected"' : '';
 
-    $('select[name="category_id"]').append("<option " + selected + "  value=" + id + " >" + description + " </option>");
+    $('select[name="category_id"]').append("<option " + selected + "  value=" + id + " >" + name + " </option>");
 
-    $('select[name="parent_id"]').append("<option " + selected + "  value=" + id + " >" + description + " </option>");
+    $('select[name="parent_id"]').append("<option " + selected + "  value=" + id + " >" + name + " </option>");
+
+    /* if we are on subcategory module throw event change() to show the other fields */
+    $('select[name="parent_id"]').change();
 
 }

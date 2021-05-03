@@ -48,8 +48,9 @@
 			$constraint = new Assert\Collection(
 				[
 					'id' => [new Assert\Uuid()],
-					'description' => [new Assert\NotBlank(), new Assert\Length(['max' => 255])],
+					'name' => [new Assert\NotBlank(), new Assert\Length(['max' => 255])],
 					'position' => [new Assert\NotBlank(), new Assert\GreaterThan(0)],
+					'description' => [new Assert\Length(['max' => 255])],
 					'select_this_category_on_save' => [new Assert\Optional()],
 					'csrf_token' => [new Assert\NotBlank()]
 				]
@@ -64,6 +65,7 @@
 		{
 			$creator->__invoke(
 				$request->get('id'),
+				$request->get('name'),
 				$request->get('description'),
 				(int)$request->get('position'),
 				$request->get('parentId', self::PARENT_CATEGORY_IS_NOT_DEFINED)

@@ -1,0 +1,115 @@
+<nav class="mainmenu">
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="{{ path('home') }}">Inicio</a>
+            </li>
+            <li><a href="#project">Institucional<i class="fa fa-angle-down"></i></a>
+                <ul class="drop-down">
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="faq.html">Faq Page</a></li>
+                    <li><a href="pricing-table.html">Pricing Table</a></li>
+                    <li><a href="testimonial.html">Testimonial Page</a></li>
+                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                    <li><a href="404.html">404 Page</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Mapa Interactivo<i class="fa fa-angle-down"></i></a>
+                <ul class="drop-down">
+                    <li><a href="services.html"></a></li>
+                    <li><a href="service-single-left.html">service Single Left</a></li>
+                    <li><a href="service-single.html">service Single Right</a></li>
+                    <li><a href="service-single-full.html">service Single Full Width</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="#">Publicaciones<i class="fa fa-angle-down"></i></a>
+                <ul class="drop-down">
+                    {% for category in categories %}
+                        {% if category.parent is null %}
+                            <li>
+                                <a href="#">{{ category.name }} {{ category.children is not null? '<i class="fa fa-angle-right"></i>':'' }}</a>
+
+                                {% for subcategory in category.children %}
+                                    <ul class="drop-down sub-menu">
+                                        <li><a href="index-2.html">{{ subcategory.name }}</a></li>
+                                    </ul>
+                                {% endfor %}
+
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+            <li><a href="#">Legislación<i class="fa fa-angle-down"></i></a>
+                <ul class="drop-down">
+                    <li><a href="projects-masonry.html">Projects Masonry</a></li>
+                    <li><a href="projects-3-column.html">Projects 3 Column</a></li>
+                    <li><a href="projects-2-column.html">Projects 2 Column</a></li>
+                    <li><a href="project-single.html">Project Single</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Red Municipal<i class="fa fa-angle-down"></i></a>
+                <ul class="drop-down">
+                    <li><a href="blogs-left-sidebar.html">Blogs Left Sidebar</a></li>
+                    <li><a href="blogs-right-sidebar.html">Blogs Right Sidebar</a></li>
+                    <li><a href="blogs-grid-layout.html">Blogs Grid Layout</a></li>
+                    <li><a href="blog-single-left-sidebar.html">Blog Single - Left Sidebar</a>
+                    </li>
+                    <li><a href="blog-single.html">Blog Single - Right Sidebar</a></li>
+                </ul>
+            </li>
+            <li class="mega-menu"><a href="contact.html">Contacto<i
+                            class="fa fa-angle-down"></i></a>
+                <ul class="drop-down mega-inner">
+                    <li class="single-menu">
+                        <h4>Shortcode One</h4>
+                        <ul class="list-menu">
+                            <li><a href="hero-area.html"><span class="fa fa-sliders"></span>Hero
+                                    Area</a></li>
+                            <li><a href="call-to-action.html"><span class="fa fa-phone"></span>Call
+                                    To Action</a></li>
+                            <li><a href="progress-bars.html"><span class="fa fa-bars"></span>Progress
+                                    Bars</a></li>
+                            <li><a href="tabs.html"><span
+                                            class="fa fa-toggle-on"></span>Tabs</a></li>
+                            <li><a href="counter.html"><span class="fa fa-clock-o"></span>Counter</a>
+                            </li>
+                            <li><a href="team.html"><span class="fa fa-sliders"></span>Team</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="single-menu">
+                        <h4>Shortcode Two</h4>
+                        <ul class="list-menu">
+                            <li><a href="accordion.html"><span class="fa fa-server"></span>Accordion</a>
+                            </li>
+                            <li><a href="parallax.html"><span class="fa fa-star"></span>Parallax</a>
+                            </li>
+                            <li><a href="buttons.html"><span class="fa fa-toggle-on"></span>Buttons</a>
+                            </li>
+                            <li><a href="features.html"><span class="fa fa-list-alt"></span>Features</a>
+                            </li>
+                            <li><a href="font-icon.html"><span
+                                            class="fa fa-font-awesome"></span>Font Icon</a></li>
+                            <li><a href="clients.html"><span
+                                            class="fa fa-user"></span>Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="single-menu last">
+                        <div class="list-menu mega-widget">
+                            <p>Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                                Etiam efficitur ultricies elit, eget ullamcorper enim
+                                scelerisque sit amet. </p>
+                            <div class="image">
+                                <img src="images/mega-image.jpg" alt="#">
+                                <a href="about-us.html" class="btn primary"><i
+                                            class="fa fa-link"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</nav>

@@ -12,10 +12,10 @@
 	
 	final class LocalAttachmentManager implements AttachmentManager
 	{
-		const TINY_IMAGE = ["with" => "100", "height" => "100", "extension" => "_100x100.jpg"];
-		const SMALL_IMAGE = ["with" => "200", "height" => "200", "extension" => "_200x200.jpg"];
-		const MEDIUM_IMAGE = ["with" => "300", "height" => "300", "extension" => "_300x300.jpg"];
-		const LARGE_SIZE_IMAGE = "";
+		const TINY_IMAGE = ["width" => "100", "height" => "100", "extension" => "_100x100.jpg"];
+		const SMALL_IMAGE = ["width" => "242", "height" => "161", "extension" => "_242x161.jpg"];
+		const MEDIUM_IMAGE = ["width" => "366", "height" => "271", "extension" => "_366x271.jpg"];
+		const LARGE_IMAGE =  ["width" => "720", "height" => "478", "extension" => "_720x478.jpg"];
 		const HUGE_SIZE_IMAGE = "";
 		private string $articleAttachmentDirectory;
 		private Filesystem $filesystem;
@@ -33,6 +33,7 @@
 				$this->filesystem->remove($this->articleAttachmentDirectory . '/' . $attachmentFileName . self::TINY_IMAGE['extension']);
 				$this->filesystem->remove($this->articleAttachmentDirectory . '/' . $attachmentFileName . self::SMALL_IMAGE['extension']);
 				$this->filesystem->remove($this->articleAttachmentDirectory . '/' . $attachmentFileName . self::MEDIUM_IMAGE['extension']);
+				$this->filesystem->remove($this->articleAttachmentDirectory . '/' . $attachmentFileName . self::LARGE_IMAGE['extension']);
 			} catch (Exception $e) {
 				$e->getMessage();
 			}
@@ -43,12 +44,13 @@
 			$this->generateImage($imageFileName, self::TINY_IMAGE);
 			$this->generateImage($imageFileName, self::SMALL_IMAGE);
 			$this->generateImage($imageFileName, self::MEDIUM_IMAGE);
+			$this->generateImage($imageFileName, self::LARGE_IMAGE);
 		}
 		
 		private function generateImage(string $imageFileName, array $size): void
 		{
 			$image = new ImageResize($this->articleAttachmentDirectory . $imageFileName);
-			$image->resizeToBestFit($size['with'], $size['height']);
+			$image->resize($size['width'], $size['height'], $allow_enlarge = True);
 			$image->save($this->articleAttachmentDirectory . $imageFileName . $size['extension']);
 		}
 	}

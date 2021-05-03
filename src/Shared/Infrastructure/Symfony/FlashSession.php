@@ -73,4 +73,14 @@
 				array_key_exists($key . '.0', $this->flashes) ||
 				array_key_exists($key . '.0.0', $this->flashes);
 		}
+		
+		function getFirstImage($json):string
+		{
+			$attachments = json_decode($json, true);
+			
+			$key = array_search( 'imagen',$attachments);
+			
+			return $attachments[$key]['url'];
+			
+		}
 	}

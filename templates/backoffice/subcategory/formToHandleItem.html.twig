@@ -14,7 +14,7 @@
                             <option selected disabled> - Obligatorio -</option>
                             {% for parent in parent_categories %}
                                 <option {{ parent_id == parent.id? 'selected':'' }}
-                                        value="{{ parent.id }}"> {{ parent.description }}</option>
+                                        value="{{ parent.id }}"> {{ parent.name }}</option>
                             {% endfor %}
                         </select>
                         <small class="errorLabelContainer form-text text-muted text-danger">
@@ -38,25 +38,25 @@
                                 </span>
                     </button>
 
-                    <div id="description-container"
-                         class="form-group {% if flash.has('errors.description') %} has-error {% endif %} d-none">
-                        <label>Descripción ( * )</label>
+                    <div id="name-container"
+                         class="form-group {% if flash.has('errors.name') %} has-error {% endif %} d-none">
+                        <label>Nombre ( * )</label>
                         <input type="text"
                                placeholder=" - Obligatorio -"
-                               name="description"
-                               value="{{ description }}"
-                               data-description_from_database="{{ description }}"
-                               data-available_description_url="{{ path(description_available_path) }}"
+                               name="name"
+                               value="{{ name }}"
+                               data-name_from_database="{{ name }}"
+                               data-available_name_url="{{ path(name_available_path) }}"
                                maxlength="100"
-                               id="description"
+                               id="name"
                                class="form-control"
                                required
                                autocomplete="false"
                                autofocus
                         >
                         <small class="errorLabelContainer form-text text-muted text-danger">
-                            {% if flash.has('errors.description') %}
-                                <span class="has-error">{{ flash.get('errors.description') }} </span>
+                            {% if flash.has('errors.name') %}
+                                <span class="has-error">{{ flash.get('errors.name') }} </span>
                             {% endif %}
                         </small>
                     </div>
@@ -117,7 +117,7 @@
     {{ parent() }}
     <script src="{{ asset('assets/js/blog/_shared/modal.utils.js') }}"></script>
     <script src="{{ asset('assets/js/blog/_shared/form/click.submit.button.on.enter.key.press.in.keyboard.js') }}"></script>
-    <script src="{{ asset('assets/js/blog/category/form/check.available.description.in.subcategory.js') }}"></script>/
+    <script src="{{ asset('assets/js/blog/category/form/check.available.name.in.subcategory.js') }}"></script>/
     <script src="{{ asset('assets/js/blog/category/form/check.available.position.in.subcategory.js') }}"></script>
     <script src="{{ asset('assets/js/blog/category/form/show.subcategory.position.if.parentId.field.is.not.null.js') }}"></script>
     <script src="{{ asset('assets/js/blog/category/form/reset.form.validation.when.parentId.value.is.change.js') }}"></script>

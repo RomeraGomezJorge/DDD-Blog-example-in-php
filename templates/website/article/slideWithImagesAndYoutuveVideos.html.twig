@@ -1,0 +1,27 @@
+{% if attachment.hasMoreThanOneImageOrVideo(article.attachments) %}
+    <div class="single-blog slider">
+        <div class="blog-slide owl-carousel owl-theme owl-loaded">
+            {% for imageAndVideo in attachment.getAllImagesAndVideos(article.attachments) %}
+                <div class="owl-item">
+                    <div class="single-slide">
+                        {% if attachment.isAnImage(imageAndVideo) %}
+                            <img src="{{ asset(attachment_folder~imageAndVideo.url~large_image_extension) }}"/>
+                        {% else %}
+                            <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/{{ imageAndVideo.url }}"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% elseif attachment.hasOnlyOneImage(article.attachments) %}
+    <img src="{{ asset(attachment.getFirstImage(article.attachments)) }}"/>
+{% elseif attachment.hasOnlyOneYoutubeVideo(article.attachments) %}
+    <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/{{ attachment.getFirstYoutubeVideo(article.attachments) }}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+{% endif %}

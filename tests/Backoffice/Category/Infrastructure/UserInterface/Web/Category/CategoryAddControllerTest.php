@@ -20,7 +20,7 @@
 			
 			$form = $crawler->selectButton('submitBtn')->form();
 			
-			$form['description'] = $category->description();
+			$form['description'] = $category->name();
 			
 			$form['position'] = $category->position();
 			

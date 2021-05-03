@@ -3,7 +3,7 @@ $(document).ready(function () {
 
         $("#form").validate().resetForm();
 
-        $('input[name="position"],input[name="description"]').closest('.form-group').removeClass('has-error').removeClass('has-success');
+        $('input[name="position"],input[name="name"]').closest('.form-group').removeClass('has-error').removeClass('has-success');
 
     });
 

@@ -9,8 +9,8 @@
         <thead>
         <tr role="row">
             <th class="sorting_{{ toggleSort }} d-none d-sm-table-cell">
-                <a href="{{ path(list_path) }}/page-1/order-description-{{ toggleSort }}/rows_per_page-{{ limit }}/{{ filters }}">
-                    Descripción
+                <a href="{{ path(list_path) }}/page-1/order-name-{{ toggleSort }}/rows_per_page-{{ limit }}/{{ filters }}">
+                    Nombre
                 </a>
             </th>
             <th class="sorting_{{ toggleSort }} d-none d-sm-table-cell">
@@ -34,15 +34,15 @@
                     data-url_delete_confirmation_modal="{{ path(delete_confirmation_modal_path) }}"
                     data-css_selector_to_handle_tr_style_that_contains_items_to_delete="#css-selector-for-tr-that_contains-items-to-delete-{{ category.id }}"
                     data-id_to_delete="{{ category.id }}"
-                    data-message_to_delete_confirmation='La provincia con la descripción "{{ category.description }}".'
-                    data-modal_title='{{ category.description }}'
+                    data-message_to_delete_confirmation='La provincia con el nombre "{{ category.name }}".'
+                    data-modal_title='{{ category.name }}'
                 >
                     <div class="row pt-2">
-                        <div class="col-10"><b>{{ category.description }}</b></div>
+                        <div class="col-10"><b>{{ category.name }}</b></div>
                         <div class="col-2"><i class="fas fa-ellipsis-v"></i></div>
                     </div>
                 </td>
-                <td class="d-none d-sm-table-cell">{{ category.description }}</td>
+                <td class="d-none d-sm-table-cell">{{ category.name }}</td>
                 <td class="d-none d-sm-table-cell">{{ category.position }}</td>
                 <td class="d-none d-sm-table-cell">
                     <div class="d-block d-sm-none">
@@ -69,7 +69,7 @@
                                 data-url_delete_confirmation_modal="{{ path(delete_confirmation_modal_path) }}"
                                 data-css_selector_to_handle_tr_style_that_contains_items_to_delete="#css-selector-for-tr-that_contains-items-to-delete-{{ category.id }}"
                                 data-id_to_delete="{{ category.id }}"
-                                data-message_to_delete_confirmation='La provincia con la descripción "{{ category.description }}".'
+                                data-message_to_delete_confirmation='La categoria con el nombre "{{ category.name }}".'
                         >
                             <i class="fa fa-times"></i>
                         </button>
@@ -90,7 +90,7 @@
 {% block filterFields %}
     <div class="form-group col-12 col-sm-4">
         <select name="filters[0][field]" id="field" class="form-control form-control-sm w-100">
-            <option value="description" selected>Descripción</option>
+            <option value="name" selected>Descripción</option>
         </select>
     </div>
     <div class="form-group col-12 col-sm-4">

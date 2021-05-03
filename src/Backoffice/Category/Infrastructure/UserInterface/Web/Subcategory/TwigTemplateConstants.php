@@ -12,7 +12,7 @@
 		const CREATE_PATH = 'subcategory_create';
 		const UPDATE_PATH = 'subcategory_update';
 		const DELETE_PATH = 'subcategory_delete';
-		const DESCRIPTION_AVAILABLE_PATH = 'subcategory_description_available';
+		const NAME_AVAILABLE_PATH = 'subcategory_name_available';
 		const POSITION_AVAILABLE_PATH = 'subcategory_position_available';
 		const SECTION_TITLE = 'Subcategoria';
 		const FORM_FILE_PATH = 'backoffice/subcategory/formToHandleItem.html.twig';

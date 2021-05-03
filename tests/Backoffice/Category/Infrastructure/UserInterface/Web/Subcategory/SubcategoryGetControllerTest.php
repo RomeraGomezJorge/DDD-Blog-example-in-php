@@ -26,9 +26,9 @@
 			
 			$this->isOnPage($this->client, self::LIST_SUBCATEGORY_ITEMS_PATH);
 			
-			$this->shouldFindOnThePage($this->client, $anotherSubcategory->description());
+			$this->shouldFindOnThePage($this->client, $anotherSubcategory->name());
 			
-			$this->shouldFindOnThePage($this->client, $someOtherSubcategory->description());
+			$this->shouldFindOnThePage($this->client, $someOtherSubcategory->name());
 		}
 		
 		/** @test */
@@ -54,12 +54,12 @@
 			
 			$this->isOnPage(
 				$this->client,
-				self::LIST_CATEGORY_ITEMS_PATH . '/page-1/order-createAt-desc/rows_per_page-10/filters%5B0%5D%5Bfield%5D=' . $filterByField . '&filters%5B0%5D%5Boperator%5D=%3D&filters%5B0%5D%5Bvalue%5D=' . $anotherCategory->description()
+				self::LIST_CATEGORY_ITEMS_PATH . '/page-1/order-createAt-desc/rows_per_page-10/filters%5B0%5D%5Bfield%5D=' . $filterByField . '&filters%5B0%5D%5Boperator%5D=%3D&filters%5B0%5D%5Bvalue%5D=' . $anotherCategory->name()
 			);
 			
 			$this->shouldFindOnThePage(
 				$this->client,
-				$anotherCategory->description()
+				$anotherCategory->name()
 			);
 		}
 		
@@ -80,7 +80,7 @@
 			
 			$this->shouldFindOnThePage(
 				$this->client,
-				$anotherSubcategory->description()
+				$anotherSubcategory->name()
 			);
 		}
 		

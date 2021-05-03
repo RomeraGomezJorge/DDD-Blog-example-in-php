@@ -15,7 +15,8 @@
 			$constraint = new Assert\Collection(
 				[
 					'id' => [new Assert\Uuid()],
-					'description' => [new Assert\NotBlank(), new Assert\Length(['min' => 3, 'max' => 255])],
+					'name' => [new Assert\NotBlank(), new Assert\Length(['min' => 3, 'max' => 255])],
+					'description' => [new Assert\Length(['min' => 0, 'max' => 255])],
 					'position' => [new Assert\NotBlank(), new Assert\GreaterThan(0)],
 					'csrf_token' => [new Assert\NotBlank()]
 				]

@@ -16,10 +16,11 @@
 		{
 			return $this->render(TwigTemplateConstants::FORM_FILE_PATH, [
 				'list_path' => TwigTemplateConstants::LIST_PATH,
-				'description_available_path' => TwigTemplateConstants::DESCRIPTION_AVAILABLE_PATH,
+				'name_available_path' => TwigTemplateConstants::NAME_AVAILABLE_PATH,
 				'position_available_path' => TwigTemplateConstants::POSITION_AVAILABLE_PATH,
 				'page_title' => TwigTemplateConstants::SECTION_TITLE,
 				'id' => Uuid::random(),
+				'name' => $flashSession->get('inputs.name'),
 				'description' => $flashSession->get('inputs.description'),
 				'position' => $flashSession->get('inputs.position'),
 				'form_action_attribute' => TwigTemplateConstants::CREATE_PATH,

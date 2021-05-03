@@ -1,0 +1,278 @@
+{% extends 'base.website.html.twig' %}
+{% block meta_tags %}
+    {{   socialShareURLs.printTwitterMetaTags(article) }}
+    {{   socialShareURLs.printFacebookMetaTags(article) }}
+{% endblock %}
+{% block main %}
+    <section id="blog-main" class="blog-main archive single section">
+        <div class="container">
+            <div class="row">
+                <div class="blog-main">
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <!-- Single Post -->
+                                <div class="single-blog">
+                                    <div class="blog-post">
+
+                                        <div class="blog-head">
+                                            {% include 'website/article/slideWithImagesAndYoutuveVideos.html.twig' %}
+                                        </div>
+
+                                        {% if attachment.hasAtLeastOneAudio(article.attachments) %}
+                                            {% for audio in attachment.getAllAudios(article.attachments) %}
+                                                <br>
+                                                <audio class="col-xs-12" controls src="{{ asset(attachment_folder~audio.url) }}"></audio>
+                                                <div class="clearfix"></div>
+                                            {% endfor %}
+                                        {%  endif %}
+
+                                        <div class="blog-info">
+                                            <h2><a href="blog-single.html">{{ article.title }}</a></h2>
+                                            <div class="meta">
+                                                <span><i class="fa fa-user-o"></i>Por: <a
+                                                            href="#">{{ article.author.fullname }}</a></span>
+                                                <span><i class="fa fa-list"></i><a
+                                                            href="#">{{ article.category.name }}</a></span>
+                                                <span><i class="fa fa-calendar"></i><a
+                                                            href="#">{{ article.createAt|date('d/m/Y') }}</a></span>
+
+                                            </div>
+                                            <p>{{ article.excerpt }}</p>
+
+                                            {{ article.body }}
+
+                                            {% if attachment.hasAtLeastOneDocument(article.attachments) %}
+                                                <div class="faq section">
+                                                    <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+                                                        {% for document in attachment.getAllDocuments(article.attachments) %}
+                                                            <div class="panel panel-default active">
+                                                                <h4 class="faq-title">
+                                                                    <a href="{{ asset(attachment_folder~document.url) }}"
+                                                                       download
+                                                                       target="_blank">
+                                                                        {{ document.title is empty? 'Archivo Adjunto':document.title }}
+                                                                    </a>
+                                                                </h4>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                            <div class="clearfix"></div>
+                                            <div class="blog-bottom">
+                                                <div style="padding: 40px 20px 40px 72px;">
+                                                    <ul class="share">
+                                                        <b>Compartir :</b>
+                                                        <li><a href="{{ socialShareURLs.createFacebook(article.slug) }}"><i class="fa fa-facebook"></i></a></li>
+                                                        <li><a href="{{ socialShareURLs.createTwitter(article.slug) }}"><i class="fa fa-twitter"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <section class="services ">
+                                                    <!-- Single Service -->
+                                                    <div class="col-sm-6 col-xs-12">
+                                                        <div class="single-services ">
+                                                            <div class="icon"><i class="fa fa-angle-double-left"></i>
+                                                            </div>
+                                                            <div class=" icon two"><i
+                                                                        class="fa fa-angle-double-left"></i></div>
+                                                            <h4>
+                                                                <a href="{{ path('article', {slug:previous_article.slug }) }}">{{ previous_article.title }}</a>
+                                                            </h4>
+
+                                                        </div>
+                                                    </div>
+                                                    <!--/ End Single Service -->
+                                                    <!-- Single Service -->
+                                                    <div class="col-sm-6 col-xs-12">
+                                                        <div class="single-services right">
+                                                            <div class="icon_right two">
+                                                                <i class="fa fa-angle-double-right"></i>
+                                                            </div>
+                                                            <div class="icon_right">
+                                                                <i class="fa fa-angle-double-right"></i>
+                                                            </div>
+                                                            <h4>
+                                                                <a href="{{ path('article',{slug:next_article.slug}) }}">{{ next_article.title }}</a>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                    <!--/ End Single Service -->
+                                                </section>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/ End Single Post -->
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12 col-xs-12 sticky-area">
+                        <!-- Blog Sidebar -->
+                        <aside class="blog-sidebar">
+                            <!-- Post Tab -->
+                            <div class="single-sidebar post-tab">
+                                <!-- Post Menu -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#latest" role="tab"
+                                                                              data-toggle="tab">Latest Posts</a></li>
+                                    <li role="presentation"><a href="#popular" role="tab" data-toggle="tab">Popular
+                                            Posts</a></li>
+                                </ul>
+                                <!--/ End Post Menu -->
+                                <div class="tab-content wow fadeInUp">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="latest">
+                                        <!-- Single Post -->
+                                        <div class="single-post">
+                                            <div class="post-img">
+                                                <img src="images/blog/blog1.jpg" alt="">
+                                            </div>
+                                            <div class="post-info">
+                                                <p>September 30, 2017</p>
+                                                <h4><a href="blog-single.html">Best Marketing ways of 2017</a></h4>
+                                            </div>
+                                        </div>
+                                        <!--/ End Single Post -->
+                                        <!-- Single Post -->
+                                        <div class="single-post">
+                                            <div class="post-img">
+                                                <img src="images/blog/blog2.jpg" alt="">
+                                            </div>
+                                            <div class="post-info">
+                                                <p>July 15, 2017</p>
+                                                <h4><a href="blog-single.html">How to develop your own website</a></h4>
+                                            </div>
+                                        </div>
+                                        <!--/ End Single Post -->
+                                        <!-- Single Post -->
+                                        <div class="single-post">
+                                            <div class="post-img">
+                                                <img src="images/blog/blog3.jpg" alt="">
+                                            </div>
+                                            <div class="post-info">
+                                                <p>May 25, 2017</p>
+                                                <h4><a href="blog-single.html">Top 10 Tips for growing business </a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <!--/ End Single Post -->
+                                        <!-- Single Post -->
+                                        <div class="single-post">
+                                            <div class="post-img">
+                                                <img src="images/blog/blog1.jpg" alt="">
+                                            </div>
+                                            <div class="post-info">
+                                                <p>March 08, 2017</p>
+                                                <h4><a href="blog-single.html">How to create a Flat website</a></h4>
+                                            </div>
+                                        </div>
+                                        <!--/ End Single Post -->
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="popular">
+                                        <!-- Single Post -->
+                                        <div class="single-post">
+                                            <div class="post-img">
+                                                <img src="images/blog/blog1.jpg" alt="">
+                                            </div>
+                                            <div class="post-info">
+                                                <p>July 20, 2017</p>
+                                                <h4><a href="blog-single.html">Best Marketing ways of 2017</a></h4>
+                                            </div>
+                                        </div>
+                                        <!--/ End Single Post -->
+                                        <!-- Single Post -->
+                                        <div class="single-post">
+                                            <div class="post-img">
+                                                <img src="images/blog/blog2.jpg" alt="">
+                                            </div>
+                                            <div class="post-info">
+                                                <p>April 15, 2017</p>
+                                                <h4><a href="blog-single.html">How to develop your own website</a></h4>
+                                            </div>
+                                        </div>
+                                        <!--/ End Single Post -->
+                                        <!-- Single Post -->
+                                        <div class="single-post">
+                                            <div class="post-img">
+                                                <img src="images/blog/blog3.jpg" alt="">
+                                            </div>
+                                            <div class="post-info">
+                                                <p>March 25, 2017</p>
+                                                <h4><a href="blog-single.html">Top 10 Tips for growing business </a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <!--/ End Single Post -->
+                                        <!-- Single Post -->
+                                        <div class="single-post">
+                                            <div class="post-img">
+                                                <img src="images/blog/blog1.jpg" alt="">
+                                            </div>
+                                            <div class="post-info">
+                                                <p>March 08, 2017</p>
+                                                <h4><a href="blog-single.html">How to create a Flat website</a></h4>
+                                            </div>
+                                        </div>
+                                        <!--/ End Single Post -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/ End Post Tab -->
+
+                            <!-- Newslatter Subscribe -->
+                            <div class="single-sidebar subscribe">
+                                <h2><span>Newslatter Subscribe</span></h2>
+                                <div class="single-widget subscribe">
+                                    <p>Signup and get new blog post every week to your email. beatae vitae dicta sunt
+                                        explicabo. consectetur adipiscing elit. Vestibulum vel sapien et lacus tempus
+                                        varius. In finibus lorem vel.</p>
+                                    <form>
+                                        <input type="email" placeholder="Email Address">
+                                        <button type="submit">Subscribe!</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--/ End Newslatter Subscribe  -->
+
+                            <!-- Blog Category -->
+                            <div class="single-sidebar category">
+                                <h2><span>Categorys</span></h2>
+                                <ul>
+                                    <li><a href="#">Business Developments<span>33</span></a></li>
+                                    <li><a href="#">IT Consulting<span>23</span></a></li>
+                                    <li><a href="#">Marketing</a><span>15</span></li>
+                                    <li><a href="#">Web Resource</a><span>40</span></li>
+                                    <li><a href="#">Finance Solutions</a><span>93</span></li>
+                                    <li><a href="#">Our Gallery</a><span>10</span></li>
+                                </ul>
+                            </div>
+                            <!--/ End Blog Category -->
+
+                            <!-- Blog Tags -->
+                            <div class="single-sidebar tags">
+                                <h2><span>Tag Cloud</span></h2>
+                                <ul>
+                                    <li><a href="#">HTML5</a></li>
+                                    <li class="medium"><a href="#">CSS3</a></li>
+                                    <li><a href="#">Corporate</a></li>
+                                    <li class="big"><a href="#">Creative</a></li>
+                                    <li class="big"><a href="#">Bootstrap</a></li>
+                                    <li><a href="#">Responsive</a></li>
+                                    <li class="medium"><a href="#">amazing</a></li>
+                                    <li class="medium"><a href="#">Plugins</a></li>
+                                    <li><a href="#">website template</a></li>
+                                </ul>
+                            </div>
+                            <!--/ End Blog Tags -->
+                        </aside>
+                        <!--/ End Blog Sidebar -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

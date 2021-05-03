@@ -18,13 +18,13 @@
                     <div class="col-lg-12">
                         <input type="hidden" name="id" value="{{ id }}">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token(id) }}">
-                        <div class="form-group {{ flash.has('errors.description')? 'has-error':'' }}">
-                            <label>Descripción ( * )</label>
+                        <div class="form-group {{ flash.has('errors.name')? 'has-error':'' }}">
+                            <label>Nombre ( * )</label>
                             <input type="text"
-                                   name="description"
-                                   value="{{ description }}"
-                                   data-description_from_database=""
-                                   data-available_description_url="{{ path(description_available_path) }}"
+                                   name="name"
+                                   value="{{ name }}"
+                                   data-name_from_database=""
+                                   data-available_name_url="{{ path(name_available_path) }}"
                                    maxlength="255"
                                    id="inputFloatingLabelDescription"
                                    class="form-control"
@@ -32,7 +32,7 @@
                                    required
                             >
                             <small class="errorLabelContainer form-text text-muted text-danger">
-                                <span class="has-error">{{ flash.has('errors.description')? flash.get('errors.description'):'' }} </span>
+                                <span class="has-error">{{ flash.has('errors.name')? flash.get('errors.name'):'' }} </span>
                             </small>
                         </div>
                         <div class="form-group {{ flash.has('errors.position')? 'has-error':'' }}">
@@ -51,6 +51,21 @@
                             >
                             <small class="errorLabelContainer form-text text-muted text-danger">
                                 <span class="has-error">{{ flash.has('errors.position')? flash.get('errors.position'):'' }} </span>
+                            </small>
+                        </div>
+                        <div class="form-group {{ flash.has('errors.description')? 'has-error':'' }}">
+                            <label>Descripcíon</label>
+                            <textarea
+                                    rows="4"
+                                    name="description"
+                                    value="{{ description }}"
+                                    maxlength="255"
+                                    class="form-control"
+                                    placeholder=" - Opcional -"
+                                    autocomplete="false"
+                            >{{ description }}</textarea>
+                            <small class="errorLabelContainer form-text text-muted text-danger">
+                                <span class="has-error">{{ flash.has('errors.description')? flash.get('errors.description'):'' }} </span>
                             </small>
                         </div>
                         <div class="form-group">
@@ -95,8 +110,8 @@
     $(function () {
         $.getScript("{{ asset('assets/js/blog/_shared/modal.utils.js') }}");
         $.getScript("{{ asset('assets/js/blog/category/form/create.category.on.confirm.yes.on.modal.js') }}");
-        $.getScript("{{ asset('assets/js/blog/category/form/check.available.description.in.modal.js') }}");
-        $.getScript("{{ asset('assets/js/blog/_shared/form/add.unique.category.description.rule.js') }}");
+        $.getScript("{{ asset('assets/js/blog/category/form/check.available.name.in.modal.js') }}");
+        $.getScript("{{ asset('assets/js/blog/_shared/form/add.unique.category.name.rule.js') }}");
         $.getScript("{{ asset('assets/js/blog/category/form/check.available.position.category.in.modal.js') }}");
         $.getScript("{{ asset('assets/js/blog/_shared/form/add.unique.category.position.rule.js') }}");
     });

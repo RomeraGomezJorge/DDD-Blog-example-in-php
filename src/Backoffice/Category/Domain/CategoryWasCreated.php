@@ -8,27 +8,27 @@
 	
 	final class CategoryWasCreated extends DomainEvent
 	{
-		private string $description;
+		private string $name;
 		private string $position;
 		
 		private function __construct(
 			string $id,
-			string $description,
+			string $name,
 			string $position,
 			string $eventId = null,
 			string $occurredOn = null
 		) {
 			parent::__construct($id, $eventId, $occurredOn);
-			$this->description = $description;
+			$this->name = $name;
 			$this->position = $position;
 		}
 		
 		public static function with(
 			string $id,
-			string $description,
+			string $name,
 			string $position
 		): self {
-			return new self($id, $description, $position);
+			return new self($id, $name, $position);
 		}
 		
 		public static function eventName(): string
@@ -36,9 +36,9 @@
 			return 'category.was.created';
 		}
 		
-		public function description(): string
+		public function name(): string
 		{
-			return $this->description;
+			return $this->name;
 		}
 		
 		public function position(): string

@@ -8,7 +8,7 @@
 	use App\Backoffice\Category\Application\Put\CategoryDetailsChanger;
 	use App\Backoffice\Category\Domain\Category;
 	use App\Backoffice\Category\Domain\Exception\CategoryNotExist;
-	use App\Backoffice\Category\Domain\Exception\UnavailableCategoryDescription;
+	use App\Backoffice\Category\Domain\Exception\UnavailableCategoryName;
 	use App\Backoffice\Category\Domain\Exception\UnavailableCategoryPosition;
 	use App\Tests\Backoffice\Category\CategoryModuleUnitTestCase;
 	use App\Tests\Backoffice\Category\Domain\CategoryMother;
@@ -72,13 +72,13 @@
 			
 			$this->shouldNotValidateIfCategoryPositionIsAvailable();
 			
-			$this->shouldGenerateSlug($this->category->description());
+			$this->shouldGenerateSlug($this->category->name());
 			
 			$this->shouldFind($this->category);
 			
 			$this->shouldSave($this->category);
 			
-			$this->updater->__invoke($this->category->id(), $this->category->description(),$this->category->position());
+			$this->updater->__invoke($this->category->id(), $this->category->name(),$this->category->position());
 		}
 		
 		/** @test */
@@ -88,7 +88,7 @@
 			
 			$this->shouldNotValidateIfCategoryPositionIsAvailable();
 			
-			$this->shouldGenerateSlug($this->subcategory->description());
+			$this->shouldGenerateSlug($this->subcategory->name());
 			
 			$this->shouldFind($this->subcategory);
 			
@@ -98,7 +98,7 @@
 			
 			$this->updater->__invoke(
 				$this->subcategory->id(),
-				$this->subcategory->description(),
+				$this->subcategory->name(),
 				$this->subcategory->position(),
 				$this->category->id());
 		}
@@ -114,7 +114,7 @@
 			
 			$this->updater->__invoke(
 				$this->category->id(),
-				$this->category->description(),
+				$this->category->name(),
 				$this->category->position());
 		}
 		
@@ -131,7 +131,7 @@
 			
 			$this->updater->__invoke(
 				$this->subcategory->id(),
-				$this->subcategory->description(),
+				$this->subcategory->name(),
 				$this->subcategory->position(),
 				$this->category->id());
 		}
@@ -145,7 +145,7 @@
 			
 			$this->shouldHaveUniqueCategoryPosition($this->category);
 			
-			$this->shouldGenerateSlug($this->category->description());
+			$this->shouldGenerateSlug($this->category->name());
 			
 			$this->shouldFind($this->category);
 			
@@ -153,7 +153,7 @@
 			
 			$this->updater->__invoke(
 				$this->category->id(),
-				$this->category->description(),
+				$this->category->name(),
 				$newPosition);
 		}
 		
@@ -166,7 +166,7 @@
 			
 			$this->shouldHaveUniqueCategoryPosition($this->subcategory);
 			
-			$this->shouldGenerateSlug($this->subcategory->description());
+			$this->shouldGenerateSlug($this->subcategory->name());
 			
 			$this->shouldFind($this->subcategory);
 			
@@ -176,7 +176,7 @@
 			
 			$this->updater->__invoke(
 				$this->subcategory->id(),
-				$this->subcategory->description(),
+				$this->subcategory->name(),
 				$newPosition,
 				$this->category->id());
 		}
@@ -186,7 +186,7 @@
 		{
 			$unavailableDescription = WordMother::random();
 			
-			$this->expectException(UnavailableCategoryDescription::class);
+			$this->expectException(UnavailableCategoryName::class);
 			
 			$this->shouldNotHaveUniqueCategoryDescription($this->category);
 			
@@ -205,7 +205,7 @@
 		{
 			$unavailableDescription = WordMother::random();
 			
-			$this->expectException(UnavailableCategoryDescription::class);
+			$this->expectException(UnavailableCategoryName::class);
 			
 			$this->shouldNotHaveUniqueCategoryDescription($this->subcategory);
 			
@@ -235,7 +235,7 @@
 			
 			$this->shouldNotSave();
 			
-			$this->updater->__invoke($this->category->id(), $this->category->description(), $unavailablePosition);
+			$this->updater->__invoke($this->category->id(), $this->category->name(), $unavailablePosition);
 		}
 		
 		/** @test */
@@ -255,7 +255,7 @@
 			
 			$this->updater->__invoke(
 				$this->subcategory->id(),
-				$this->subcategory->description(),
+				$this->subcategory->name(),
 				$unavailablePosition,
 				$this->category->id());
 		}
@@ -267,7 +267,7 @@
 			
 			$this->shouldNotSave();
 			
-			$this->updater->__invoke(UuidMother::invalid(), $this->category->description(),
+			$this->updater->__invoke(UuidMother::invalid(), $this->category->name(),
 				$this->category->position());
 		}
 		
